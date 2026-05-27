@@ -65,8 +65,43 @@ These contracts apply to all skills, all agents, all workflows.
 | Science Writer | `agents/science-writer.md` | literature research, manuscript drafting, expert review |
 | Literature Extractor | `agents/literature-extractor.md` | verbatim quantitative extraction from sources with full provenance |
 | Extraction Validator | `agents/extraction-validator.md` | source-faithfulness verification |
+| Acoustic Telemetry Specialist | `agents/acoustic-telemetry-specialist.md` | receiver array design, VPS, detection probability, range testing, cooperative networks |
+| Movement Ecology Specialist | `agents/movement-ecology-specialist.md` | home range, HMMs, state-space models, step selection, migratory connectivity |
+| Fisheries Stock & Management Specialist | `agents/fisheries-stock-management-specialist.md` | stock structure, SEDAR, C&R survival, management framing, council jurisdiction |
+| Species Distribution Modelling Specialist | `agents/species-distribution-modelling-specialist.md` | INLA-SPDE / inlabru iSDM, BRT, marine covariates, projections |
+| Geospatial & Environmental Data Specialist | `agents/geospatial-environmental-data-specialist.md` | GLORYS / OISST / Copernicus, ERDDAP, raster / sf / terra workflows |
 
-Add domain-specialist agents under `agents/` as your lab's work requires. Use `agents/_domain-specialist.template.md` as the starting skeleton.
+## Griffin Lab keyword-to-specialist routing
+
+The Lab Director consults this table first to dispatch a request. If a request falls outside
+the listed terms, the Lab Director falls back to inspecting `knowledge_base/*/INDEX.md`.
+
+| Request keywords / phrasing | Specialist(s) | Dispatch pattern |
+|---|---|---|
+| "acoustic telemetry", "VPS", "receiver", "detection efficiency", "range test", "tag retention", "FACT", "OTN", "ACT", "iTAG", "Innovasea", "VR2", "VR4" | acoustic-telemetry-specialist + quantitative-scientist | Pattern A |
+| "home range", "KDE", "AKDE", "Brownian bridge", "HMM", "behavioural state", "step selection", "SSF", "state-space model", "migratory connectivity", "movescape" | movement-ecology-specialist + quantitative-scientist | Pattern A |
+| "stock structure", "SEDAR", "MRIP", "FMP", "SAFMC", "GMFMC", "ASMFC", "catch-and-release", "C&R survival", "post-release mortality", "management implications", "allocation" | fisheries-stock-management-specialist (+ acoustic-telemetry-specialist for C&R survival) | Pattern A or B |
+| "SDM", "species distribution model", "iSDM", "INLA", "inlabru", "SPDE", "BRT", "habitat model", "niche model", "projection", "climate scenario", "BlueShark", "cobia SDM" | species-distribution-modelling-specialist + geospatial-environmental-data-specialist + quantitative-scientist | Pattern B |
+| "GLORYS", "OISST", "MUR SST", "Copernicus", "ERDDAP", "rerddap", "GEBCO", "bathymetry", "chlorophyll", "covariate raster", "extract covariates", "regrid", "reproject" | geospatial-environmental-data-specialist | Pattern A or D |
+| "tarpon", "permit", "bonefish", "cobia", "snook", "red drum" + biology/movement context | acoustic-telemetry-specialist + movement-ecology-specialist (+ fisheries-stock-management-specialist if management framing) | Pattern B |
+| "tarpon", "permit", "bonefish", "cobia" + distribution / habitat | species-distribution-modelling-specialist + acoustic-telemetry-specialist + geospatial-environmental-data-specialist | Pattern B |
+| "manuscript draft", "intro", "discussion", "abstract", "polish this section" | science-writer (consulting domain specialists; use griffin-writing-style skill) | Pattern C |
+| "grant", "proposal", "LOI", "fellowship essay", "broader impacts" | science-writer (proposal mode; use griffin-writing-style skill) | Pattern C |
+| "reviewer comments", "response to reviewers", "revision letter", "rebuttal" | science-writer + the domain specialist whose section is being defended | Pattern B |
+| "interpret these results", "what does this mean ecologically" | relevant domain specialist (no analysis needed) | Pattern D |
+| "review this code", "diagnose this pipeline" | quantitative-scientist + relevant domain specialist when the issue is domain-coupled | Pattern A or B |
+
+**Quantitative Scientist rule** (per `agents/lab-director.md`): if a task involves any data
+analysis, modelling, or code, the Quantitative Scientist is always involved.
+
+Patterns are defined in `agents/lab-director.md`:
+- **A (focused analysis)**: one domain specialist + quantitative-scientist.
+- **B (cross-domain)**: multiple domain specialists in parallel + quantitative-scientist.
+- **C (writing)**: science-writer leads, consults domain specialists as needed.
+- **D (pure consultation)**: one specialist, no analysis.
+
+Add or modify domain-specialist agents under `agents/` as the lab's work evolves. Use
+`agents/_domain-specialist.template.md` as the starting skeleton.
 
 ## Knowledge base
 
