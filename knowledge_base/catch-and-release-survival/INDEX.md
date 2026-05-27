@@ -4,6 +4,7 @@ domain: "Fisheries: physiology and management"
 description: Catch-and-release survival in recreational marine fisheries, focused on the lab's primary taxa (Atlantic tarpon, permit, bonefish, cobia, snook, sharks). Acoustic-detection and VPS-based post-release survival estimation, handling and air-exposure effects, predation-vs-stress mortality, recovery physiology, and management implications.
 last_updated: 2026-05-26
 article_count: 1
+ingested_sources: 2
 owner: fisheries-stock-management-specialist
 co_owners: [acoustic-telemetry-specialist]
 ---
@@ -42,7 +43,14 @@ acoustic detection process itself (see `acoustic-telemetry-methods`).
 
 | Article | Summary |
 |---|---|
-| [post-release-survival-design](articles/post-release-survival-design.md) | Study-design considerations for acoustic-detection-based C&R survival estimation |
+| [post-release-survival-design](articles/post-release-survival-design.md) | Study-design considerations for acoustic-detection-based C&R survival estimation. **Draft status** with verbatim extractions from Griffin et al. 2025 (Seychelles bonefish) and Casselberry et al. 2024 (Bahia Honda hammerhead-tarpon) |
+
+## Ingested sources (`raw/`)
+
+| Source | Status | Headline finding |
+|---|---|---|
+| [Griffin_2025_BonefishPRP_Seychelles](raw/Griffin_2025_BonefishPRP_Seychelles.md) | draft | Overall PRP 13%; 75% of events at one site; 15× site effect; cryptic predation in 83% of events |
+| [Casselberry_2024_HammerheadTarpon_BahiaHonda](raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md) | draft | Combined depredation + immediate PRP 15.3% for tarpon fought > 5 min; risk peaks 5-12 min into fight, outgoing current |
 
 ## Cross-references to other topics
 

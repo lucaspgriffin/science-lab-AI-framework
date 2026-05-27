@@ -3,7 +3,8 @@ topic: movement-ecology-analysis
 domain: "Methods: behavioural and spatial inference"
 description: Analytical layer for movement-ecology inference: home range and utilisation distributions, state-space models for irregular telemetry, hidden Markov models for behavioural-state segmentation, step-selection analyses, network-based connectivity, and migratory-connectivity metrics. Marine and aquatic taxa focus.
 last_updated: 2026-05-26
-article_count: 2
+article_count: 3
+ingested_sources: 2
 owner: movement-ecology-specialist
 co_owners: [acoustic-telemetry-specialist]
 ---
@@ -46,6 +47,14 @@ construction (see `acoustic-telemetry-methods`) or population-scale distribution
 |---|---|
 | [home-range-and-utilisation-distributions](articles/home-range-and-utilisation-distributions.md) | KDE, AKDE, and the autocorrelation pitfalls that govern method choice |
 | [resource-selection-functions-with-clogit](articles/resource-selection-functions-with-clogit.md) | Matched case-control RSFs via `survival::clogit(method = "efron")`; cross-validation pattern with manual covariate prediction |
+| [migratory-contingents-and-entrainment](articles/migratory-contingents-and-entrainment.md) | Entrainment hypothesis for migratory marine fish; three Western Atlantic Atlantic tarpon contingents; collapse-recovery dynamics. **Draft status** from Griffin et al. 2025 (*Fish and Fisheries*) verbatim extraction |
+
+## Ingested sources (`raw/`)
+
+| Source | Status | Headline finding |
+|---|---|---|
+| [Griffin_2025_EntrainmentHypothesis](raw/Griffin_2025_EntrainmentHypothesis.md) | draft | Three Western Atlantic tarpon contingents; mixing at Mississippi Delta and South Florida; adult vagrancy in NW Europe; global landings decline > 80% (1965–2007) |
+| [vanZinnicqBergmann_2024_IntraguildPredatorCommunity](raw/vanZinnicqBergmann_2024_IntraguildPredatorCommunity.md) | draft (abstract-only) | IBM + acoustic telemetry on 8 elasmobranch species, Bimini; prey select habitats based on safety > food; asymmetric IGP drives spatial separation |
 
 ## Cross-references to other topics
 

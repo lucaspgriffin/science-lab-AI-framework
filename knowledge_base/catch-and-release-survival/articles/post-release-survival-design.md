@@ -5,18 +5,25 @@ domain: "Fisheries: physiology and management"
 aliases: ["C&R survival", "post-release mortality", "acoustic survival"]
 related: [detection-efficiency-and-range-testing, predation-mediated-mortality]
 sources:
+  - raw/Griffin_2025_BonefishPRP_Seychelles.md
+  - raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md
   - raw/Holder_2020_PermitCRMortality.md
   - raw/Brownscombe_2017_CRBestPractices.md
   - raw/Griffin_2018_TarponCooperative.md
-status: stub
-origin: manual
+status: draft
+origin: literature-extractor (manual via pdftotext; full text available for Griffin 2025 and Casselberry 2024)
 last_updated: 2026-05-26
 ---
 
 # Study design for acoustic-telemetry-based catch-and-release survival estimation
 
-> **Stub article.** Replace placeholder text with verbatim extractions from the cited
-> sources via `agents/literature-extractor.md`, then verify via `agents/extraction-validator.md`.
+> **Draft article** with verbatim extractions from Griffin et al. 2025
+> ([raw/Griffin_2025_BonefishPRP_Seychelles.md](../raw/Griffin_2025_BonefishPRP_Seychelles.md))
+> and Casselberry et al. 2024
+> ([raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md](../raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md)).
+> Older referenced sources (Holder 2020, Brownscombe 2017, Griffin 2018) are still to be
+> ingested. Promote to `published` after the `extraction-validator` agent (or Lucas)
+> confirms claim-citation alignment.
 
 ## Summary
 
@@ -64,15 +71,82 @@ plausibility depends on:
 
 For vulnerable species (permit, bonefish, snook, juvenile tarpon), predation by sharks,
 goliath grouper, dolphins, or other predators is a substantial fraction of apparent C&R
-mortality. The Holder et al. (2020) permit study documented [TODO: extract verbatim
-quantitative claim] predation-attributable mortality from VPS-based positional analysis.
+mortality. Three Griffin Lab papers establish the headline quantitative magnitudes:
+
+**Casselberry et al. 2024** (great hammerheads on tarpon at Bahia Honda, Florida Keys):
+"During the visual survey, 394 Tarpon were hooked. The combined observed shark
+depredation and immediate postrelease predation rate was 15.3% for Tarpon that were
+fought longer than 5 min. Survival analysis and decision trees showed that depredation
+risk was highest in the first 5-12 min of the fight and on the outgoing current." With
+51 acoustically-tagged tarpon and 14 great hammerheads tracked simultaneously, "Great
+Hammerheads shifted their space use in Bahia Honda to overlap with Tarpon core use
+areas. Great Hammerheads restricted their space use on the outgoing current when
+compared to the incoming current, which could drive increased shark-angler
+interactions." [Abstract, Casselberry et al. 2024]
+
+**Griffin et al. 2025** (bonefish post-release predation in the Seychelles): "Bonefish
+(Albula glossodonta) in the Alphonse Group of islands ... overall PRP = 13%. Notably,
+PRP was highly site-specific, with 75% of predation events occurring at a single
+location where bonefish were 15 times more likely to be predated compared to other
+sites. Cryptic predation was prevalent, as only 17% of predation events were preceded
+by observing potential predators. Sicklefin lemon sharks (Negaprion acutidens) were
+responsible for most PRP, often tracking and preying on bonefish within an average of
+9 minutes after release (30-1080 seconds; 545 ± 315 seconds)." [Abstract, Griffin et al.
+2025]
+
+Critically, in the Griffin et al. 2025 study, "air exposure, among other angling event
+characteristics, did not affect PRP", yet air exposure DID affect reflex impairment.
+This decouples the standard handling-impairment metric from realised predation risk in
+predator-dense environments.
+
+For broader cross-system comparisons, Griffin et al. 2025 also synthesises:
+- **Danylchuk et al. 2007c (Bahamas):** "bonefish that lost equilibrium following
+  capture were six times more likely to be predated within the first 20 minutes
+  post-release." [Griffin et al. 2025, §1, p. 2]
+- **Lennox et al. 2017 (Anaa Atoll, French Polynesia, blackfin reef shark *Carcharhinus
+  melanopterus*-dense):** "bonefish released without air exposure experienced PRP of
+  33%, while those exposed to air had PRP > 60%." [Griffin et al. 2025, §1, p. 2]
+- **Moxham et al. 2019 (Seychelles, surgically tagged):** "rather high PRP (at least
+  43%) but those fish were surgically implanted with transmitters (average hooking to
+  release time of approximately 11 minutes) which confounds findings when applied to a
+  C&R context." [Griffin et al. 2025, §1, p. 2]
+
+The Holder et al. (2020) permit study at the Florida Keys established the lab's
+operational framework for VPS-based positional analysis of post-release predation; that
+extraction is still TODO and would refine the methodological detail in this article
+when ingested.
+
+### Floats and visual tracking as an alternative to VPS
+
+Where a VPS array is logistically infeasible (open flats, large reef expanses, lack of
+HR2 infrastructure), the lab has used **visual-track-with-float** designs to monitor PRP
+in real time. The Griffin et al. (2025) Seychelles bonefish design is the current
+reference:
+
+> "Each fish was visually tracked by attaching a small, brightly colored fishing float
+> via a small hook carefully inserted into the dorsal musculature just behind the dorsal
+> fin. The float was connected to the line above the fish (~10 m) on 5.4 kg test
+> fluorocarbon, which was tethered to a spinning rod with the bail left open to ensure
+> minimal resistance on the fish during tracking. While wading on the flats, we tracked
+> each fish for up to 20 minutes following release, which is the time period predation
+> is most likely to occur for bonefish (Danylchuk et al., 2007c). The predator species,
+> behavior, and time (seconds) to predation were recorded in attempted or successful
+> predation events." [Griffin et al. 2025, §2.2, p. 3]
+
+The 20-minute tracking window is the operative inference horizon: predation events
+outside that window are right-censored. The Griffin 2025 design also documented "cryptic
+predation": 83% of predation events were NOT preceded by an observed predator, meaning
+visual-observer-based predator-presence covariates substantially underestimate true
+predator density.
 
 ### VPS-window detection
 
 Where VPS arrays are deployed, sub-receiver positional records can identify stationary
 tags (probable mortalities) within the array footprint, separating mortality from
 emigration. This is the strongest single design improvement for the acoustic-survival
-approach and is the lab's preferred design where logistics permit.
+approach and is the lab's preferred design where logistics permit, particularly for
+species with longer tracking horizons than the 20-minute float-tracking window can
+support.
 
 ## Methods and approaches
 
@@ -102,18 +176,39 @@ or long-life-tag deployments.
 
 ## Sources
 
+**Ingested (verbatim extractions in `raw/`):**
+
+- **Griffin et al. 2025.** "Site-specific post-release predation of bonefish (Albula
+  glossodonta) in a catch-and-release recreational fishery: informing voluntary actions
+  and management strategies for a Blue Economy." *Fisheries Research* 286: 107387.
+  DOI: 10.1016/j.fishres.2025.107387.
+  Extraction: [Griffin_2025_BonefishPRP_Seychelles.md](../raw/Griffin_2025_BonefishPRP_Seychelles.md).
+- **Casselberry et al. 2024.** "Depredation rates and spatial overlap between Great
+  Hammerheads and Tarpon in a recreational fishing hot spot." *Marine and Coastal
+  Fisheries* 16: e10277. DOI: 10.1002/mcf2.10277.
+  Extraction: [Casselberry_2024_HammerheadTarpon_BahiaHonda.md](../raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md).
+
+**Cited in the article above but not yet ingested:**
+
 - **Holder et al. 2020.** "Stress, predators, and survival: exploring permit (*Trachinotus
   falcatus*) catch-and-release fishing mortality in the Florida Keys." *Journal of
   Experimental Marine Biology and Ecology* 524: 151283. DOI: 10.1016/j.jembe.2019.151283.
-  [TODO: ingest, extract pages.]
 - **Brownscombe et al. 2017.** "Best practices for catch-and-release recreational
   fisheries: angling tools and tactics." *Reviews in Fish Biology and Fisheries* 27:
-  593-617. DOI: 10.1007/s11160-017-9485-y. [TODO: ingest.]
+  593-617. DOI: 10.1007/s11160-017-9485-y.
 - **Griffin et al. 2018.** "Keeping up with the Silver King: using cooperative acoustic
   telemetry networks to quantify the movements of Atlantic tarpon." *Fisheries Research*
-  205: 65-76. DOI: 10.1016/j.fishres.2018.04.008. [TODO: ingest.]
+  205: 65-76. DOI: 10.1016/j.fishres.2018.04.008.
+- **Danylchuk et al. 2007c.** Cited via Griffin et al. 2025 for the equilibrium-loss
+  6× predation finding.
+- **Lennox et al. 2017.** Cited via Griffin et al. 2025 for the Anna Atoll air-exposure
+  PRP comparison.
+- **Moxham et al. 2019.** Cited via Griffin et al. 2025 for the Seychelles
+  surgically-tagged baseline.
 
 ## Template usage notes
 
-This is a stub; promote to `draft` once verbatim extractions are in place and to
-`published` after `extraction-validator` confirms claim-citation alignment.
+This is a `draft` article: verbatim extractions for the headline 2024-2025 papers are in
+place. Promote to `published` after `extraction-validator` confirms claim-citation
+alignment for the ingested sources AND after Holder 2020, Brownscombe 2017, and Griffin
+2018 are also ingested with `raw/` source files.
