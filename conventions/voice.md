@@ -184,26 +184,77 @@ ones more heavily.
 
 ## 9. Voice exemplars
 
-Three first/co-authored papers that exemplify the current voice. The model should re-read these
-when uncertain about tone for a specific document type.
+First-author papers that exemplify the current voice. The model should re-read these
+when uncertain about tone for a specific document type. Recent papers (2023+) are weighted
+more heavily; older papers are reference points for the foundational lab voice but may
+read more conservatively than current writing.
+
+**Primary exemplars (re-read first):**
+
+- **Griffin et al. 2025**, *Fish and Fisheries*: "Synthesising Support for the Entrainment
+  Hypothesis Through Spatially Explicit Life Cycles, Vagrancy and Collapse of Atlantic
+  Tarpon." The current flagship first-author paper for synthesis writing in a top-tier
+  fisheries venue. Reference patterns: the funnel-structure Introduction, the
+  spatially-explicit life-cycle framing, the conservation closer.
+- **Griffin et al. 2025**, *Fisheries*: "Habitat management and restoration as missing
+  pieces in flats ecosystems conservation and the fishes and fisheries that they support."
+  Management-framed voice for an applied audience. Reference patterns: the
+  problem-and-stakes opening, the gap-naming penultimate Introduction paragraph, the
+  actionable management implications closer.
+- **Griffin et al. 2023**, *Environmental Biology of Fishes*: "There's no place like home:
+  high site fidelity and small home range of bonefish inhabiting fringing reef flats in
+  Culebra, Puerto Rico." Movement-ecology / residency voice. Reference patterns: the
+  Results subsection openers, the mechanistic interpretation in the Discussion, the
+  scoped-to-system implications.
+
+**Secondary exemplars (also worth pulling for specific document types):**
+
+- **Griffin et al. 2025**, *Fisheries Research*: "Site-specific post-release predation of
+  bonefish in a catch-and-release recreational fishery: informing voluntary actions and
+  management strategies." C&R-survival voice; pairs analytic results to voluntary-action
+  recommendations without overclaiming. Reference for the catch-and-release-survival
+  workstream.
+- **Griffin et al. 2024**, *Canadian Journal of Fisheries and Aquatic Sciences*: "Beyond
+  the hook: do angler-fish interactions in a catch-and-release recreational fishery modify
+  fish space use and catchability?" Methodological-question framing combined with
+  management-relevant inference; recent telemetry voice.
+- **Griffin et al. 2023**, *Marine Policy*: "Angler and guide perceptions provide insights
+  into the status and threats of the Atlantic tarpon fishery." Stakeholder-engagement
+  voice; uses local ecological knowledge framing throughout. Reference for any LEK or
+  knowledge-co-production-framed manuscript or proposal.
+- **Griffin et al. 2023**, *Environmental Biology of Fishes*: "Assessing the potential for
+  red tide algal bloom impacts on Atlantic tarpon along the southwestern coast of Florida."
+  Multi-stressor / environmental-stressor voice; useful reference for federal-proposal
+  framing where "environmental change" language is required.
+- **Griffin et al. 2022**, *Ecological Applications*: "Predator-prey landscapes of large
+  sharks and game fishes in the Florida Keys." Predator-prey / depredation voice; reference
+  for any shark-depredation or large-pelagic interaction framing.
+- **Griffin et al. 2022**, *Marine Ecology Progress Series*: "Seasonal variation in the
+  phenology of Atlantic tarpon in the Florida Keys." Phenology / spatiotemporal voice.
+
+**Foundational exemplar (older but still load-bearing):**
 
 - **Griffin et al. 2018**, *Fisheries Research*: "Keeping up with the Silver King: using
-  cooperative acoustic telemetry networks to quantify the movements of Atlantic tarpon." The
-  foundational lab-voice paper for cooperative-network telemetry framing. Introduction and
-  Discussion are clean voice examples.
-- **Griffin, Brownscombe et al. 2022**, *Journal of Applied Ecology*: "Application of telemetry
-  and stable isotope analyses to inform the resource ecology and management of a marine fish."
-  The management-framed voice on first-author work. Introduction funnel and final
-  management-implications paragraph are reference patterns.
-- **Griffin et al. 2023**, *Environmental Biology of Fishes*: "Cascading effects of climate
-  change on recreational marine flats fishes and fisheries." Synthesis voice with explicit
-  policy framing; the final Discussion paragraphs are the reference pattern for the lab's
-  "implications for management and conservation" closing.
+  cooperative acoustic telemetry networks to quantify the movements of Atlantic tarpon."
+  The foundational lab paper for cooperative-network telemetry framing. Slightly more
+  conservative voice than current work but the cooperative-network framing is still the
+  lab's reference pattern.
 
-Additional reference patterns: Brownscombe, Griffin et al. 2020 (*Methods in Ecology and
-Evolution*) for methods-paper voice; Cooke et al. 2022 (*Journal of Fish Biology*, "The
-movement ecology of fishes") for synthesis-paper structure; Lowerre-Barbieri et al. 2021
-(*Fish and Fisheries*, "Movescapes ...") for movescape-framing language.
+**Adjacent co-author exemplars (use when section style is specific):**
+
+- **Brownscombe, Griffin et al. 2020**, *Methods in Ecology and Evolution*: "A practical
+  method to account for variation in detection range in acoustic telemetry arrays." For
+  methods-paper voice.
+- **Cooke, Bergman, Twardek et al. 2022**, *Journal of Fish Biology*: "The movement
+  ecology of fishes." For synthesis-paper structure.
+- **Lowerre-Barbieri, Friess, Griffin et al. 2021**, *Fish and Fisheries*: "Movescapes and
+  eco-evolutionary movement strategies in marine fish." For movescape-framing language.
+- **Danylchuk, Griffin et al. 2023**, *Environmental Biology of Fishes*: "Cascading effects
+  of climate change on recreational marine flats fishes and fisheries." For multi-stressor
+  conservation framing.
+
+The full publication list is on the lab's Google Scholar page:
+https://scholar.google.com/citations?user=scPoGrkAAAAJ&hl=en
 
 ---
 

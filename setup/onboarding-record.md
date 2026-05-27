@@ -70,13 +70,29 @@ Notable Griffin Lab voice deltas vs framework defaults:
 - Word document defaults: Times New Roman 12 pt black; manual paragraph spacing; no
   running page headers or footnotes.
 
-Voice exemplars (`conventions/voice.md` section 9):
+Voice exemplars (`conventions/voice.md` section 9), refreshed 2026-05-26 from the lab's
+Google Scholar profile (https://scholar.google.com/citations?user=scPoGrkAAAAJ&hl=en):
 
-- Griffin et al. 2018, *Fisheries Research* (tarpon cooperative telemetry).
-- Griffin, Brownscombe et al. 2022, *Journal of Applied Ecology* (telemetry + isotope for
-  resource ecology).
-- Griffin et al. 2023, *Environmental Biology of Fishes* (climate cascading effects on
-  flats fisheries).
+Primary exemplars (most recent first-author work):
+- Griffin et al. 2025, *Fish and Fisheries* (Entrainment Hypothesis synthesis for Atlantic
+  tarpon).
+- Griffin et al. 2025, *Fisheries* (Habitat management and restoration in flats
+  ecosystems).
+- Griffin et al. 2023, *Environmental Biology of Fishes* (bonefish site fidelity in
+  Culebra).
+
+Secondary exemplars: Griffin et al. 2025 *Fisheries Research* (bonefish post-release
+predation); Griffin et al. 2024 *CJFAS* (angler-fish interactions); Griffin et al. 2023
+*Marine Policy* (tarpon angler perceptions); Griffin et al. 2023 *EBF* (red tide tarpon);
+Griffin et al. 2022 *Ecological Applications* (predator-prey landscapes); Griffin et al.
+2022 *MEPS* (tarpon phenology).
+
+Foundational exemplar: Griffin et al. 2018 *Fisheries Research* (Silver King cooperative
+telemetry, the original lab-voice paper).
+
+Note: the initial onboarding mistakenly listed Brownscombe et al. 2022 *J Applied Ecology*
+and Danylchuk et al. 2023 *EBF* as Griffin first-author exemplars; both are co-authored.
+Corrected on Scholar re-fetch.
 
 ## Phase 3: Manuscript norms
 
