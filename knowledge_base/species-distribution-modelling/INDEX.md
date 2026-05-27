@@ -3,7 +3,7 @@ topic: species-distribution-modelling
 domain: "Methods: spatial inference"
 description: Species distribution modelling and integrated SDM (iSDM) for marine fishes, with emphasis on INLA-SPDE / inlabru frameworks, boosted regression trees (BRT), and the integration of telemetry, mark-recapture, and fishery-dependent data with marine environmental covariates. Includes climate-projection workflows and extrapolation diagnostics.
 last_updated: 2026-05-26
-article_count: 1
+article_count: 3
 owner: species-distribution-modelling-specialist
 co_owners: []
 ---
@@ -52,6 +52,8 @@ environmental covariates. Does not cover environmental data acquisition itself (
 | Article | Summary |
 |---|---|
 | [integrated-sdm-with-inla-spde](articles/integrated-sdm-with-inla-spde.md) | Farchadi-style iSDM workflow with shared 2D SPDE, 1D SPDE covariate smoothers, and dataset-specific intercepts |
+| [1d-spde-matern-smoothers](articles/1d-spde-matern-smoothers.md) | 1D SPDE Matérn smoothers as a non-linear-covariate replacement for manual polynomials; cobia-iSDM DIC reduction case |
+| [hurdle-brt-habitat-suitability](articles/hurdle-brt-habitat-suitability.md) | Two-stage hurdle BRT (prevalence + intensity) for zero-inflated fishery-independent abundance data |
 
 ## Cross-references to other topics
 

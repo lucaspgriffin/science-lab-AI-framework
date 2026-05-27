@@ -3,7 +3,7 @@ topic: movement-ecology-analysis
 domain: "Methods: behavioural and spatial inference"
 description: Analytical layer for movement-ecology inference: home range and utilisation distributions, state-space models for irregular telemetry, hidden Markov models for behavioural-state segmentation, step-selection analyses, network-based connectivity, and migratory-connectivity metrics. Marine and aquatic taxa focus.
 last_updated: 2026-05-26
-article_count: 1
+article_count: 2
 owner: movement-ecology-specialist
 co_owners: [acoustic-telemetry-specialist]
 ---
@@ -45,6 +45,7 @@ construction (see `acoustic-telemetry-methods`) or population-scale distribution
 | Article | Summary |
 |---|---|
 | [home-range-and-utilisation-distributions](articles/home-range-and-utilisation-distributions.md) | KDE, AKDE, and the autocorrelation pitfalls that govern method choice |
+| [resource-selection-functions-with-clogit](articles/resource-selection-functions-with-clogit.md) | Matched case-control RSFs via `survival::clogit(method = "efron")`; cross-validation pattern with manual covariate prediction |
 
 ## Cross-references to other topics
 

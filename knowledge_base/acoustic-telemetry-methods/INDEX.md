@@ -3,7 +3,7 @@ topic: acoustic-telemetry-methods
 domain: Methods: detection and survey
 description: Passive acoustic telemetry for marine and estuarine fish (tarpon, cobia, bonefish, permit, snook, sharks) and sea turtles. Receiver array design, VPS positioning, detection-efficiency modelling, tag specification, deployment logistics, cooperative networks (FACT, iTAG, OTN, ACT, MATOS), and detection-history construction.
 last_updated: 2026-05-26
-article_count: 1
+article_count: 2
 owner: acoustic-telemetry-specialist
 co_owners: []
 ---
@@ -49,6 +49,7 @@ integration with environmental covariates. Does not cover downstream behavioural
 | Article | Summary |
 |---|---|
 | [detection-efficiency-and-range-testing](articles/detection-efficiency-and-range-testing.md) | Stationary and drift-test approaches to detection-efficiency characterisation; integration into spatial-ecology inference |
+| [region-misclassification-data-qa](articles/region-misclassification-data-qa.md) | Empirical data-QA pattern for cooperative-network telemetry feeds; upstream region labels do not always match station coordinates |
 
 ## Cross-references to other topics
 

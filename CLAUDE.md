@@ -70,6 +70,8 @@ These contracts apply to all skills, all agents, all workflows.
 | Fisheries Stock & Management Specialist | `agents/fisheries-stock-management-specialist.md` | stock structure, SEDAR, C&R survival, management framing, council jurisdiction |
 | Species Distribution Modelling Specialist | `agents/species-distribution-modelling-specialist.md` | INLA-SPDE / inlabru iSDM, BRT, marine covariates, projections |
 | Geospatial & Environmental Data Specialist | `agents/geospatial-environmental-data-specialist.md` | GLORYS / OISST / Copernicus, ERDDAP, raster / sf / terra workflows |
+| Stable Isotope & Trophic Ecology Specialist | `agents/stable-isotope-and-trophic-ecology-specialist.md` | δ13C / δ15N / δ34S, MixSIAR mixing models, trophic-position, isoscapes, ontogenetic diet shifts |
+| Marine Megafauna & Anthropogenic Impacts Specialist | `agents/marine-megafauna-anthropogenic-impacts-specialist.md` | AIS-based vessel strike risk, tourism / wildlife-watching compliance, biologger workflows for whales, whale sharks, and sea turtles |
 
 ## Griffin Lab keyword-to-specialist routing
 
@@ -83,6 +85,8 @@ the listed terms, the Lab Director falls back to inspecting `knowledge_base/*/IN
 | "stock structure", "SEDAR", "MRIP", "FMP", "SAFMC", "GMFMC", "ASMFC", "catch-and-release", "C&R survival", "post-release mortality", "management implications", "allocation" | fisheries-stock-management-specialist (+ acoustic-telemetry-specialist for C&R survival) | Pattern A or B |
 | "SDM", "species distribution model", "iSDM", "INLA", "inlabru", "SPDE", "BRT", "habitat model", "niche model", "projection", "climate scenario", "BlueShark", "cobia SDM" | species-distribution-modelling-specialist + geospatial-environmental-data-specialist + quantitative-scientist | Pattern B |
 | "GLORYS", "OISST", "MUR SST", "Copernicus", "ERDDAP", "rerddap", "GEBCO", "bathymetry", "chlorophyll", "covariate raster", "extract covariates", "regrid", "reproject" | geospatial-environmental-data-specialist | Pattern A or D |
+| "stable isotope", "SIA", "δ13C", "δ15N", "δ34S", "MixSIAR", "simmr", "isoscape", "trophic position", "trophic level", "diet analysis", "ontogenetic diet shift", "fecal eDNA", "gut content", "lipid extraction", "TDF", "CSIA" | stable-isotope-and-trophic-ecology-specialist + quantitative-scientist | Pattern A or B |
+| "vessel strike", "ship strike", "AIS", "Global Fishing Watch", "GFW", "Maritime Connector", "vessel traffic", "vessel speed", "DWAS", "whale shark", "Rice's whale", "right whale", "marine mammal", "cetacean", "biologger", "CATS tag", "OpenTag", "tourism compliance", "provisioning", "wildlife watching", "distance sampling", "BACI", "encounter rate" | marine-megafauna-anthropogenic-impacts-specialist (+ geospatial-environmental-data-specialist for AIS workflow) | Pattern A or B |
 | "tarpon", "permit", "bonefish", "cobia", "snook", "red drum" + biology/movement context | acoustic-telemetry-specialist + movement-ecology-specialist (+ fisheries-stock-management-specialist if management framing) | Pattern B |
 | "tarpon", "permit", "bonefish", "cobia" + distribution / habitat | species-distribution-modelling-specialist + acoustic-telemetry-specialist + geospatial-environmental-data-specialist | Pattern B |
 | "manuscript draft", "intro", "discussion", "abstract", "polish this section" | science-writer (consulting domain specialists; use griffin-writing-style skill) | Pattern C |
@@ -102,6 +106,22 @@ Patterns are defined in `agents/lab-director.md`:
 
 Add or modify domain-specialist agents under `agents/` as the lab's work evolves. Use
 `agents/_domain-specialist.template.md` as the starting skeleton.
+
+## Griffin Lab skill catalog (external)
+
+The lab maintains a separate skills repo at `~/github/claude_skills/` that holds skills
+authored before (and outside) the framework. These remain the canonical source of truth
+for their respective domains; the framework consults them by reference rather than
+duplicating their content.
+
+| Skill | Location | What it covers |
+|---|---|---|
+| griffin-writing-style | `~/github/claude_skills/writing/griffin-writing-style/` | Manuscript, proposal, LOI, fellowship, and reviewer-reply writing voice (full per-journal and per-funder calibration). The framework's `conventions/voice.md`, `manuscript-format.md`, and `reply-format.md` are framework-native mirrors of this skill's surface, but the skill carries richer detail (e.g., `references/funder-profiles.md`, `references/journal-profiles.md`, `references/species-vocabulary.md`, `references/opening-bank.md`, `references/paragraph-structure.md`, `references/reference-quality-protocol.md`). Load the skill directly for any writing task that benefits from per-journal or per-funder calibration. |
+| r-coding-standards | `~/github/claude_skills/writing/r-coding-standards/` | R project structure, function design, testing, documentation, dependency management. Overlaps with `conventions/code-format.md` but provides additional worked-example detail; load the skill for R-heavy tasks that need rigorous structure beyond the framework conventions. |
+| turtle-cold-stun-extraction | plugin-installed | End-to-end workflow for extracting handwritten "Cold Stun Event Turtle Data" forms (multi-page scanned PDFs) into clean CSV/XLSX with uncertainty flags. Highly task-specific; triggered automatically when Lucas provides scanned cold-stun stranding forms. |
+
+These skills are auto-loaded by Claude Code via the plugin system when their trigger
+descriptions match; the entries above are documentation, not invocation requirements.
 
 ## Knowledge base
 

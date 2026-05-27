@@ -230,3 +230,7 @@ README) lists expected files and their sources.
 - Figure-rendering conventions: `conventions/figure-format.md`
 - Project goal specification (per-project): `conventions/goal-spec.template.md`
 - Deployment (Shiny apps): `Rscript -e "rsconnect::deployApp()"` from the repo root
+- **Canonical R coding standards skill** (richer than this file for project structure,
+  function design, testing, and documentation worked examples):
+  `~/github/claude_skills/writing/r-coding-standards/SKILL.md`. Load for R-heavy tasks
+  that need the worked-example depth this file does not carry.
