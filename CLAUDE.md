@@ -170,7 +170,7 @@ Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before h
 
 ## Collaborator-ready work (hard rule)
 
-Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments. A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to the author, and finished to-do items. Methods say what the rule is, not how it was arrived at. In code, comments sit next to the lines so that a colleague who does not know R well can follow every step.
+Never start a sentence with an acronym in any document. Spell it out or put a word before it. Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments. A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to the author, and finished to-do items. Methods say what the rule is, not how it was arrived at. In code, comments sit next to the lines so that a colleague who does not know R well can follow every step.
 
 ## Operating principles
 
