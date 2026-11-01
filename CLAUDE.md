@@ -158,6 +158,16 @@ These files MUST be loaded before relevant tasks, regardless of which workflow o
 
 If a skill produces written output without loading the relevant conventions, that is a routing failure to flag.
 
+## File naming (hard rule)
+
+Word and PDF documents get plain names with spaces between words, never underscores (for example `Response to Jordan.docx`). Underscores between words read as AI-generated. The one exception is an underscore before the last element when it is a date, a status or a draft number (for example `Correction letter_2026-10-11.docx`, `Manuscript_final.docx`, `Report_v2.pdf`). Code, CSV and figure files keep underscores as usual. Existing documents keep their names unless a rename is asked for.
+
+## Section headings (hard rule)
+
+This applies to everything produced in any project: manuscripts, R Markdown and HTML reports, summaries, memos, READMEs, slides, emails, chat messages, and banner comments in code. Headings are short topic labels in the plain word a scientist would use, one to three words and four at most. Good headings are Summary, Methods, Results, Meal cost, Repeatability, Growth, Baseline, Limitations, Next steps. A heading is never a question, a sentence, a finding, or a narrated phrase, and it does not open with What, How, Why, Which, The, A, or An. "What was found" is Results. "The cost of a meal" is Meal cost. "What repeats within a fish" is Repeatability. "How sure are these results?" is Uncertainty. The finding goes in the first sentence under the heading, never in the heading. Numbering such as "Step 04:" or "E2." may come before the label and does not count. Headings a journal requires stay as the journal sets them.
+
+Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before handing over any document, and report a one-line Heading scan with the Tell scan. A hook runs the same check after file edits, but it does not see files built by a script, such as a Word document or a rendered report.
+
 ## Operating principles
 
 These come from the paper's §3 and apply to every interaction:
