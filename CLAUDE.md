@@ -168,6 +168,10 @@ This applies to everything produced in any project: manuscripts, R Markdown and 
 
 Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before handing over any document, and report a one-line Heading scan with the Tell scan. A hook runs the same check after file edits, but it does not see files built by a script, such as a Word document or a rendered report.
 
+## Collaborator-ready work (hard rule)
+
+Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments. A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to the author, and finished to-do items. Methods say what the rule is, not how it was arrived at. In code, comments sit next to the lines so that a colleague who does not know R well can follow every step.
+
 ## Operating principles
 
 These come from the paper's §3 and apply to every interaction:
