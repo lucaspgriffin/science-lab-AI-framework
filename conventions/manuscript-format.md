@@ -116,7 +116,13 @@ study:
 Voice in Methods: active where the agent matters ("We deployed 25 receivers in a 5 × 5 grid
 across the study site"), passive where it does not. Package versions are explicit (e.g.,
 `unmarked 1.4.1`, `INLA 24.05.10`, `inlabru 2.10.1`, `glmmTMB 1.1.10`, `terra 1.7-83`).
-Anything not reproducible from the Methods alone moves to a supplementary protocol.
+Anything not reproducible from the Methods alone moves to a supplementary protocol. Where the
+target journal writes Methods in the passive, use the passive for routine procedures and keep
+"we" for analytical decisions.
+
+**Software sentence.** Every package named with a version carries its citation in that sentence, taken from `citation()` and added to the reference list. Check each one rather than assuming a later sentence covers it.
+
+**Problems in Methods.** An instrument fault, lost record, or exclusion gets only what a reader needs to follow what was done or to judge a result, in one plain line. Ask whether the detail changes anything. Exact minutes, scan counts, and assumed times that do not alter a result go to the Supporting Information or the data notes, and so does a full calibration account. Avoid abnormal, wrong, failed, and error for routine handling. Keep corrections that change the numbers, stated calmly with their size. A sentence giving step sizes and a scan of 3,513 onsets makes a small fix read like a major mistake; write "The pump timer shifted twice in October, so seals were located separately on either side of each shift." Do not close a paper on a warning about calibration errors.
 
 ### 3.4 Results
 
@@ -124,7 +130,8 @@ Subsections paired one-to-one with main figures where possible. Subsection openi
 names the analytical question, not the result ("We asked whether ...", "To assess ..."). No
 interpretation or speculation in Results; that belongs in Discussion. Statistics reported with
 effect sizes and intervals, not just p-values. Cite specific test, effect direction, and
-magnitude.
+magnitude. Where the journal asks for them, give the test statistic, degrees of freedom, and P
+beside the estimate for main effects, and say once in Methods what the intervals are.
 
 ### 3.5 Discussion
 
@@ -151,6 +158,10 @@ management action, the geographic or policy context, and why the findings suppor
 
 Citation density in Discussion: high (8–15 per paragraph). Each interpretation paragraph
 cites at least one supporting and one complicating reference where the literature is mixed.
+
+### 3.6 Target journal check
+
+Do this unasked, before any manuscript section is called finished, and never say a draft matches a journal without having done it. Read recent papers from the target journal in full, at least three on the same topic and several on the same methods, and compare all four sections for length, paragraph and sentence length, voice, hedging, how statistics are reported, and how problems are handled. Measure rather than go by impression, and report which papers were read and any that were cut off. Open text often comes from Europe PMC full-text XML or the journal's own open-access pages in the browser. Format rules come from the journal's current author instructions, not from memory. Change what departs from the journal and hurts the paper. Keep his voice where other papers in the journal write the same way, and do not add hypotheses after the fact or pad citations to match.
 
 ---
 
@@ -191,6 +202,8 @@ Render-time rules live in `conventions/figure-format.md`. Document-level rules:
 
 ## 6. Supplementary materials
 
+- While the manuscript is in draft, keep supplementary material below the main text in the same
+  Word file, and split it out only at submission.
 - Single PDF for supplementary figures and tables (Supp Fig 1 through N, Supp Table 1 through
   N), plus a separate supplementary protocol document for methods detail when needed.
 - Large data tables go as `.csv` or `.xlsx`.

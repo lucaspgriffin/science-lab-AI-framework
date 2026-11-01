@@ -53,6 +53,9 @@ uncertainty and weakens the case in both manuscripts and proposals.
 Do not apply "may," "potentially," or "suggest" to every claim. If the data supports a
 statement, say so directly.
 
+Match each claim to its estimate. A low value with an interval above zero is "at most weakly
+repeatable", not "not repeatable". Compare hedging with papers from the target journal.
+
 ---
 
 ## 3. Punctuation rules
@@ -154,6 +157,9 @@ The signature anti-patterns. LLM defaults skew toward these.
   manuscript" (use substantive openers instead, per `reply-format.md`).
 - **Quantitative placeholders**: never `[X]`, `[QUANTIFY]`, or `(N)`. Either the real number is
   there or the sentence reads qualitatively.
+
+Avoid dramatic comparatives for ordinary measurements, such as "the sharpest rise in" or "a
+striking". Name the measurement.
 
 ---
 
