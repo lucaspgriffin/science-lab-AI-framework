@@ -306,6 +306,20 @@ If the RFP specifies a different font or colour scheme, follow the RFP.
 
 ---
 
+## 13. Section headings
+
+This applies to everything produced in any project: manuscripts, R Markdown and HTML reports, summaries, memos, READMEs, slides, emails, chat messages, and banner comments in code. Headings are short topic labels in the plain word a scientist would use, one to three words and four at most. Good headings are Summary, Methods, Results, Meal cost, Repeatability, Growth, Baseline, Limitations, Next steps. A heading is never a question, a sentence, a finding, or a narrated phrase, and it does not open with What, How, Why, Which, The, A, or An. "What was found" is Results. "The cost of a meal" is Meal cost. "What repeats within a fish" is Repeatability. "How sure are these results?" is Uncertainty. The finding goes in the first sentence under the heading, never in the heading. Numbering such as "Step 04:" or "E2." may come before the label and does not count. Headings a journal requires stay as the journal sets them.
+
+Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before handing over any document, and report a one-line Heading scan with the Tell scan. A hook runs the same check after file edits, but it does not see files built by a script, such as a Word document or a rendered report.
+
+## 14. Paragraphs and collaborator documents
+
+**Paragraphs and rhythm.** Manuscript paragraphs are developed units, usually 130 to 170 words, never a run of short blocks. Each states a claim first, puts the evidence inside the sentences, says what it means, and hands off to the next paragraph. If he has drafted text for the project, start from his sentences and keep his framing. Never end a paragraph on a glib one-liner such as "is an obvious place to look". Never hang a relative clause off a citation, as in "(1992), who followed grass carp for a month, yet we found no study that". Do not chain "because" and "so" clauses or join unrelated facts with a comma and "and". Aim for sentences averaging 25 to 30 words with real variation, and split anything over about 45 words unless it is a list of numbers. Count sentences properly, since "et al." and decimals do not end a sentence. After any rewrite, compare it paragraph by paragraph with the checked version, because rewrites quietly change meaning.
+
+**Documents for collaborators.** A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to Lucas, and finished to-do items. Methods say what the rule is, not how it was arrived at. Keep the correction record in the data log and git history. Search for dated history as well as the word audit, because history hides in methods text.
+
+**Internal labels.** Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments.
+
 ## Cross-references
 
 - Manuscript section architecture and citation conventions: `conventions/manuscript-format.md`

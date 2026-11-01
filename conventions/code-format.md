@@ -223,6 +223,24 @@ README) lists expected files and their sources.
 
 ---
 
+## 11. Section headings in reports and code
+
+This applies to everything produced in any project: manuscripts, R Markdown and HTML reports, summaries, memos, READMEs, slides, emails, chat messages, and banner comments in code. Headings are short topic labels in the plain word a scientist would use, one to three words and four at most. Good headings are Summary, Methods, Results, Meal cost, Repeatability, Growth, Baseline, Limitations, Next steps. A heading is never a question, a sentence, a finding, or a narrated phrase, and it does not open with What, How, Why, Which, The, A, or An. "What was found" is Results. "The cost of a meal" is Meal cost. "What repeats within a fish" is Repeatability. "How sure are these results?" is Uncertainty. The finding goes in the first sentence under the heading, never in the heading. Numbering such as "Step 04:" or "E2." may come before the label and does not count. Headings a journal requires stay as the journal sets them.
+
+Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before handing over any document, and report a one-line Heading scan with the Tell scan. A hook runs the same check after file edits, but it does not see files built by a script, such as a Word document or a rendered report.
+
+## 12. Comments, labels and sharing
+
+**Comments on every step.** Comments sit next to the lines, not only on blocks. A colleague who does not know R well must be able to follow every step. Each statement gets a plain comment beside it or directly above it saying what it does to the data, unless it is self-evident. Say what unfamiliar functions do in words (`%%`, `findInterval`, `tapply`). A loop says what repeats, a condition says the rule in words, and a `while` says when it stops. A packed line gets a small worked example above it. Comments stay short, in a neutral technical register, with no session dates, no history of earlier versions, and no internal labels.
+
+**Internal labels.** Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments.
+
+**Documents and repositories for collaborators.** A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to Lucas, and finished to-do items. Methods say what the rule is, not how it was arrived at. Keep the correction record in the data log and git history. Search for dated history as well as the word audit, because history hides in methods text. Before a repository goes to a collaborator, move working notes, draft emails, review files, retired code, and old drafts into `.gitignore` and out of tracking, rewrite the README and data log so they describe the current state, remove local paths, and rename labelled outputs. `.gitignore` does not remove earlier versions from git history, so anyone given the repository can still read them. Say so plainly and offer a fresh repository with one starting commit.
+
+**Checking explanations.** Treat an inherited explanation of a data problem as a claim to test, not a fact to repeat, and check it against the raw records before writing it down. Read what the instrument files actually store, including headers and raw signals, because they can settle questions that summaries cannot. Do not filter on a statistic tied to the quantity being estimated, because that biases the estimate. Say which fix a result rests on, and do not state a fixed value is safe without a reason from the data.
+
+**Checking edits.** After a rename or refactor that should not change results, rerun with the same seed and compare outputs byte for byte. After a comment-only edit, compare parsed code with the comments removed.
+
 ## Cross-references
 
 - Code-implementation skill: `skills/workflows/code-implementation/SKILL.md`
