@@ -63,6 +63,7 @@ tooling, palette, typography, panel labelling, scale bars, export format.
 
 ## 4. Panel labelling
 
+- Check the target journal's figure rules before final figures. Its panel labels override the default here, and some journals allow a fitted line only for a significant relationship, with the equation in the caption. Do not plot a line or smoother that the text does not test.
 - Top-left corner of each panel, **12 pt bold**, no parentheses (just `A`, `B`, `C`),
   positioned outside the plot area.
 - Sub-panels use letter+number (`A1`, `A2`, `A3`) only when the sub-panel is clearly a
