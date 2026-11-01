@@ -161,6 +161,12 @@ The signature anti-patterns. LLM defaults skew toward these.
 Avoid dramatic comparatives for ordinary measurements, such as "the sharpest rise in" or "a
 striking". Name the measurement.
 
+**Plain comparisons.** Give means rather than multiples, as in "our fish averaged 80 g", not "14 to 37 times smaller".
+
+**His editing habits.** He turns noun phrases into verbs ("how efficiently meals are processed", not "the efficiency with which meals are processed"), softens inference ("may not", not "cannot"; "indicate", not "mark"), and states a need directly ("additional tests are needed to assess") rather than attributing it ("those authors called for"). He cuts caveats about the analysis that a reader does not need, such as a sentence saying P values are descriptive.
+
+**Comments for coauthors.** One short question or request in his first person, as he would type it, for example "What dose of Aqui-S did we use? The journal will want it." No preamble, no explanation of why it matters beyond a few words, and only where that person is needed.
+
 ---
 
 ## 7. Authoring vs editing
