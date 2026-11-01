@@ -159,6 +159,14 @@ management action, the geographic or policy context, and why the findings suppor
 Citation density in Discussion: high (8–15 per paragraph). Each interpretation paragraph
 cites at least one supporting and one complicating reference where the literature is mixed.
 
+**Discussion discipline.** Cite no figures or tables in the Discussion, and do not restate result values, intervals, or test statistics there. Say in words what the result means and compare it with the literature. A plain value is fine only where it is being compared with another study.
+
+**Last paragraph.** End on what the study means, not on a list of methods advice. Open with the answer to the main question, then what others should do differently, then the practical point for the species or system. If the paragraph could sit in any paper, rewrite it.
+
+**Report one analysis.** When two models answer a question differently, keep the one that answers it and drop the other, rather than explaining the disagreement. Keep sensitivity analyses to plain alternatives a reader understands at once, name each in the Methods, and leave out invented corrections that need a paragraph to justify. Report in Results only what the argument uses.
+
+**Figures match the text.** A slope on a figure is the slope in the Results. Draw the reported model, not a separate simple fit, and do not add a caption explaining why two slopes differ.
+
 ### 3.6 Target journal check
 
 Do this unasked, before any manuscript section is called finished, and never say a draft matches a journal without having done it. Read recent papers from the target journal in full, at least three on the same topic and several on the same methods, and compare all four sections for length, paragraph and sentence length, voice, hedging, how statistics are reported, and how problems are handled. Measure rather than go by impression, and report which papers were read and any that were cut off. Open text often comes from Europe PMC full-text XML or the journal's own open-access pages in the browser. Format rules come from the journal's current author instructions, not from memory. Change what departs from the journal and hurts the paper. Keep his voice where other papers in the journal write the same way, and do not add hypotheses after the fact or pad citations to match.
