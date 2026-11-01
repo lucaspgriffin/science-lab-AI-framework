@@ -320,6 +320,8 @@ Run `python3 ~/science-lab-AI-framework/tools/check_headings.py <file>` before h
 
 **Documents for collaborators.** A report, summary, or repository given to a collaborator states the work as it stands. Leave out audit sections, error logs, review rounds, dated history such as "until 31 October", notes to Lucas, and finished to-do items. Methods say what the rule is, not how it was arrived at. Keep the correction record in the data log and git history. Search for dated history as well as the word audit, because history hides in methods text.
 
+**Acronyms.** Never start a sentence with an acronym. Spell it out or put a word before it, as in "Specific dynamic action has long been viewed" or "The magnitude of SDA". Scan finished documents for this.
+
 **Internal labels.** Use no label a reader cannot see defined, such as E1, Phase 2, decision 5, Model 7, or Part B. Name things for what they are, in prose, headings, file names, object names, and code comments.
 
 ## Cross-references
