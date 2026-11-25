@@ -2,7 +2,7 @@
 
 Event-triggered automation scripts that complement the framework's skills. Where skills run on **intent** (the user asks the AI to do something), hooks run on **events** (a commit happens, a Claude session starts, a file is edited). They keep derived state in sync and enforce conventions without the scientist or the AI having to remember.
 
-## What ships here
+## Contents
 
 ```
 hooks/
@@ -16,13 +16,13 @@ hooks/
 
 A git pre-commit hook also ships at `tools/git-hooks/pre-commit` (separate from the Claude Code hooks here because it lives in the git layer, not the Claude layer).
 
-## What each hook does
+## Hooks
 
 ### `inject-conventions.sh` (UserPromptSubmit)
 
 Pattern-matches the user's prompt against keyword rules and tells Claude which convention files to load before doing the work. For example, a prompt containing "manuscript" triggers `conventions/voice.md` and `conventions/manuscript-format.md`; a prompt containing "figure" or "ggplot" triggers `conventions/figure-format.md`. Implements the "Always-load conventions" table from `CLAUDE.md` mechanically rather than relying on Claude to remember.
 
-Adopters extend the rules table at the top of the script to match their own conventions.
+Adopters extend the rules table at the top of the script to match their own conventions. The Griffin Lab fork adds a second table, `lab_rules`, that mirrors the keyword-to-specialist routing in `CLAUDE.md`: a prompt about acoustic telemetry, movement ecology, stock assessment, species distribution modelling, environmental covariates, stable isotopes or marine megafauna points Claude at the matching specialist agent files and knowledge-base index. Writing prompts also point at the `griffin-writing-style` skill in `~/github/claude_skills/`.
 
 ### `announce-skills.sh` (UserPromptSubmit)
 
@@ -77,7 +77,7 @@ The Claude Code hook events you can target:
 
 A hook is just an executable script. Place it in `hooks/`, add it to `install.sh`'s loop, and register it in `example-settings.json`. Adopters who want lab-specific hooks (e.g., "block edits to a read-only reference corpus", "run a linter after every code-writing call") add their own scripts here.
 
-## How hooks fit the architecture
+## Architecture
 
 Skills and hooks are the framework's two automation surfaces:
 

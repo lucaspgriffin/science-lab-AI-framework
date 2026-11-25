@@ -107,7 +107,7 @@ Patterns are defined in `agents/lab-director.md`:
 Add or modify domain-specialist agents under `agents/` as the lab's work evolves. Use
 `agents/_domain-specialist.template.md` as the starting skeleton.
 
-## Griffin Lab skill catalog (external)
+## External skill catalog
 
 The lab maintains a separate skills repo at `~/github/claude_skills/` that holds skills
 authored before (and outside) the framework. These remain the canonical source of truth
@@ -146,6 +146,12 @@ Manual regeneration (for cases where the hook is not installed or the AI is revi
 node tools/generate-state.js
 open tools/system-dashboard.html
 ```
+
+## Hooks
+
+Three Claude Code hooks under `hooks/` are symlinked into `~/.claude/hooks/` and registered in `~/.claude/settings.json`. On every prompt, `inject-conventions.sh` names the convention files, specialist agents, knowledge-base indexes and the `griffin-writing-style` skill that match the prompt, and `announce-skills.sh` asks for the `**Using:**` line below. On session end, `refresh-state.sh` regenerates the dashboard. A fourth hook, `tools/check_headings.py`, runs after every file edit. The git pre-commit hook at `tools/git-hooks/pre-commit` regenerates the dashboard when framework files are staged. Reinstall with `bash hooks/install.sh` after moving the clone. See `hooks/README.md`.
+
+The agent files under `agents/` are also symlinked into `~/.claude/agents/`, so they can be dispatched as Claude Code subagents by name, and the skills under `skills/` into `~/.claude/skills/` (except `code-review`, which would shadow the built-in command of that name).
 
 ## Always-load contracts
 

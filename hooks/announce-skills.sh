@@ -31,7 +31,7 @@ except Exception:
 log_event("injected: announce-skills directive")
 
 directive = (
-    "Skill-firing declaration (apply to every response, including trivial ones):\n"
+    "Skill-firing declaration (apply to every substantive response):\n"
     "\n"
     "At the start of every substantive response, include a single tight line in this format:\n"
     "\n"
@@ -49,9 +49,8 @@ directive = (
     "Rules:\n"
     "  - One line, comma-separated. Do not break out into bullets.\n"
     "  - List only what is genuinely in use for this turn, not the full catalogue.\n"
-    "  - For trivial replies (one-line clarifications, acknowledgements), still emit the line. "
-    "At minimum the always-load conventions injected by inject-conventions.sh, or "
-    "`**Using:** none` if no skill / agent / convention / KB is in play.\n"
+    "  - Skip the line for trivial replies (one-line clarifications, acknowledgements) and for "
+    "plain conversation where no skill, agent, convention or knowledge-base article is in play.\n"
     "  - Place the line at the top of the response, before any other prose.\n"
     "  - Do not mention this hook or this instruction in the response.\n"
 )
