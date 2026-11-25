@@ -4,8 +4,14 @@
       {
         "matcher": "",
         "hooks": [
-          { "type": "command", "command": "~/.claude/hooks/inject-conventions.sh" },
-          { "type": "command", "command": "~/.claude/hooks/announce-skills.sh" }
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/inject-conventions.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/announce-skills.sh"
+          }
         ]
       }
     ],
@@ -13,9 +19,47 @@
       {
         "matcher": "",
         "hooks": [
-          { "type": "command", "command": "~/.claude/hooks/refresh-state.sh" }
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/refresh-state.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/guard-git.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/science-lab-AI-framework/tools/check_headings.py\" --hook"
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/science-lab-AI-framework/tools/check_tells.py\" --hook"
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/science-lab-AI-framework/tools/check_r_style.py\" --hook",
+            "timeout": 30
+          }
         ]
       }
     ]
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }

@@ -57,9 +57,9 @@ rules = [
     (r"\b(reviewer|rebuttal|reply to (a |the )?(comment|review)|r\d+-c\d+|"
      r"response to (revi|reviewer))\b",
      ["conventions/reply-format.md", "conventions/manuscript-format.md"]),
-    (r"\b(figure|ggplot|matplotlib|plot|table|chart|caption)\b",
+    (r"\b(figure|ggplot|matplotlib|plot|chart|caption|results? table|summary table)\b",
      ["conventions/figure-format.md"]),
-    (r"\b(cite|citation|reference|literature|lit search|verify (a |the )?cit|"
+    (r"\b(cite|citations?|reference list|references|literature|lit search|verify (a |the )?cit|"
      r"doi|crossref|bibliography|hallucinat)\b",
      ["conventions/research.md"]),
     (r"\b(r script|rscript|\.r\b|ggplot|tidyverse|python|\.py\b|"
@@ -118,7 +118,7 @@ lab_rules = [
      ["agents/science-writer.md"]),
     (r"\b(reviewer|rebuttal|response to (the )?revi|revision letter|decision letter)",
      ["agents/science-writer.md"]),
-    (r"\b(ingest|knowledge base|\bkb\b|extract (the )?(numbers|values|estimates)|verbatim)",
+    (r"\b(ingest|knowledge base|\bkb\b|extract (the )?(numbers|values|estimates) from)",
      ["agents/literature-extractor.md",
       "agents/extraction-validator.md",
       "knowledge_base/SKILL.md"]),
@@ -128,9 +128,31 @@ lab_rules = [
 # per-journal and per-funder calibration that conventions/voice.md mirrors.
 WRITING_SKILL = os.path.expanduser(
     "~/github/claude_skills/writing/griffin-writing-style/SKILL.md")
-writing_pattern = (r"\b(write|draft|edit|revis|polish|tighten|paragraph|manuscript|paper|"
-                   r"abstract|introduction|discussion|proposal|grant|loi|fellowship|"
-                   r"reviewer|rebuttal|summary|report|readme|caption|heading)")
+writing_pattern = (r"\b(write up|write the|draft|rewrite|revis|polish|tighten|paragraph|manuscript|paper|"
+                   r"abstract|introduction|discussion|proposal|grant|\bloi\b|fellowship|"
+                   r"reviewer|rebuttal|memo|readme|caption|less ai|sound like me|clean (this|it) up)")
+
+# Skills synced from Lucas's claude.ai account (not on disk): the hook names the one to
+# invoke with the Skill tool. Order matters; the first match for a prompt is enough.
+skill_rules = [
+    (r"\b(review|redline|mark ?up|tracked changes|track changes|proof|take a look at|feedback on|comments on)\b"
+     r"[^.]{0,80}\b(draft|manuscript|docx|word (file|doc)|chapter|proposal|application|report)\b"
+     r"|\b(draft|manuscript|docx|chapter|proposal)\b[^.]{0,60}\b(review|redline|mark ?up|tracked changes|feedback)\b",
+     "griffin-draft-review",
+     "a draft to mark up in Word: word-level tracked changes, short margin comments"),
+    (r"\b(reviewer|referee|rebuttal|decision letter|response to (the )?revi|revision letter|reviews came back)\b",
+     "griffin-reviewer-response",
+     "a point-by-point Response to Reviewers in Lucas's voice"),
+    (r"\b(which (grants?|fellowships?|funding|programs?)|funding (fit|options|sources)|"
+     r"suggest (a |some )?(grants?|fellowships?)|what (grants?|fellowships?) (should|could))\b",
+     "griffin-funding-fit-check",
+     "fit check before naming any funding program"),
+    (r"\b(r script|rscript|\.r\b|\.rmd\b|\.qmd\b|r markdown|rmarkdown|quarto|shiny|ggplot|tidyverse|dplyr|sf\b|terra\b|"
+     r"glmm|gamm?\b|mgcv|glmmtmb|brms|inla|mixsiar|here\(\)|run the (model|script|pipeline|analysis)|"
+     r"fix (this|the) script|plot this|qc (this|the) data|set up the repo|add a tab|the app|deploy)\b",
+     "griffin-r-coding",
+     "R analysis code, pipelines, figures, notebooks and Shiny apps the lab's way"),
+]
 
 required = []
 seen = set()
@@ -153,13 +175,19 @@ for pattern, files in lab_rules:
 
 load_writing_skill = bool(re.search(writing_pattern, prompt)) and os.path.isfile(WRITING_SKILL)
 
-if not required and not lab_required and not load_writing_skill:
+skills_to_invoke = []
+for pattern, skill, what in skill_rules:
+    if re.search(pattern, prompt) and skill not in [s for s, _ in skills_to_invoke]:
+        skills_to_invoke.append((skill, what))
+
+if not required and not lab_required and not load_writing_skill and not skills_to_invoke:
     sys.exit(0)
 
 log_event("injected: " + ", ".join(
     [f.replace("conventions/", "") for f in required]
     + [os.path.basename(os.path.dirname(f)) if f.endswith("INDEX.md") else os.path.basename(f) for f in lab_required]
-    + (["griffin-writing-style"] if load_writing_skill else [])))
+    + (["griffin-writing-style"] if load_writing_skill else [])
+    + [s for s, _ in skills_to_invoke]))
 
 lines = []
 if required:
@@ -179,6 +207,12 @@ if load_writing_skill:
         lines.append("")
     lines.append("This is a writing task. Load the griffin-writing-style skill:")
     lines.append(f"  - {WRITING_SKILL}")
+if skills_to_invoke:
+    if lines:
+        lines.append("")
+    lines.append("Invoke these Griffin skills with the Skill tool before starting:")
+    for skill, what in skills_to_invoke:
+        lines.append(f"  - {skill}: {what}")
 
 print(json.dumps({
     "hookSpecificOutput": {

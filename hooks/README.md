@@ -11,8 +11,11 @@ hooks/
 ├── example-settings.json     the settings.json stanza adopters add
 ├── inject-conventions.sh     UserPromptSubmit: route prompts to always-load conventions
 ├── announce-skills.sh        UserPromptSubmit: enforce the "Using:" declaration
-└── refresh-state.sh          Stop: regenerate the dashboard on session end
+├── refresh-state.sh          Stop: regenerate the dashboard on session end
+└── guard-git.sh              PreToolUse (Bash): block AI attribution lines and pushes to upstream
 ```
+
+The checkers in `tools/` double as hooks: `check_headings.py`, `check_tells.py` and `check_r_style.py` run after every Write or Edit and report heading-rule failures, AI-written tells, and R style breaks back to the model.
 
 A git pre-commit hook also ships at `tools/git-hooks/pre-commit` (separate from the Claude Code hooks here because it lives in the git layer, not the Claude layer).
 
@@ -27,6 +30,14 @@ Adopters extend the rules table at the top of the script to match their own conv
 ### `announce-skills.sh` (UserPromptSubmit)
 
 Tells Claude to emit a single `**Using:** <list>` line at the top of every response, naming the skills, agents, conventions, and knowledge-base articles actually in play for that turn. Makes the AI's reasoning transparent and helps newcomers learn what the framework is doing under the hood.
+
+### `guard-git.sh` (PreToolUse, Bash)
+
+Denies a `git commit`, `git tag`, `git merge` or `gh pr create` whose message carries an AI attribution line (Co-Authored-By, "Generated with Claude", noreply@anthropic.com), and any `git push` to a remote named `upstream`. The lab's repositories carry no sign that an AI was involved, and forks pull from upstream but push only to origin. The `attribution` setting in `settings.json` stops the harness adding those lines in the first place; the hook is the backstop.
+
+### Checkers (PostToolUse, Write|Edit)
+
+Report-only checkers in `tools/`. `check_tells.py` scans prose in Markdown, R Markdown, HTML and Word files for em dashes, announcer sentences, AI vocabulary, sentences that open with an acronym, internal labels, dated history and placeholders. `check_r_style.py` scans R scripts and notebook chunks for `setwd()`, absolute paths, `cat()` and `print()`, `tryCatch()`, `.RData`, figure titles, `=` assignment, bare `T`/`F`, mixed pipes, `pkg::` prefixes and helper wrappers, and parses `.R` files with Rscript so a syntax error is caught at the edit. Each also runs from the command line on any list of files and exits 1 on a hit.
 
 ### `refresh-state.sh` (Stop)
 

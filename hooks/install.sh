@@ -32,7 +32,7 @@ for arg in "$@"; do
 done
 
 if [ "$UNINSTALL" = "1" ]; then
-  for h in inject-conventions.sh announce-skills.sh refresh-state.sh; do
+  for h in inject-conventions.sh announce-skills.sh refresh-state.sh guard-git.sh; do
     if [ -L "$TARGET/$h" ]; then
       echo "Removing $TARGET/$h"
       [ "$DRY" = "1" ] || rm "$TARGET/$h"
@@ -46,7 +46,7 @@ fi
 
 [ "$DRY" = "1" ] || mkdir -p "$TARGET"
 
-for h in inject-conventions.sh announce-skills.sh refresh-state.sh; do
+for h in inject-conventions.sh announce-skills.sh refresh-state.sh guard-git.sh; do
   src="$SCRIPT_DIR/$h"
   if [ ! -f "$src" ]; then
     echo "Warning: $src missing; skipping" >&2

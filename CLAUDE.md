@@ -2,11 +2,11 @@
 
 > **This file is the single source of truth for any AI instance using the `science-lab-AI-framework`.** Anthropic's Claude Code reads it automatically when the folder is in scope. Other model harnesses can be configured to load it at session start.
 
-## What this is
+## Purpose
 
 A vendor-neutral reference framework for building a hybrid digital lab. The companion paper (Brownscombe et al., in preparation, *Beyond the AI Scientist: An architecture for human-AI scientific practice*) describes the architecture in §2-§4.
 
-## How to use
+## Usage
 
 Before starting a substantive task, read the relevant SKILL.md file(s) and the relevant convention files listed below. Skills contain detailed instructions, sub-agent architectures, and templates that improve output quality. Conventions encode voice, format, research-integrity, and methodological protocols that apply across tasks.
 
@@ -149,9 +149,14 @@ open tools/system-dashboard.html
 
 ## Hooks
 
-Three Claude Code hooks under `hooks/` are symlinked into `~/.claude/hooks/` and registered in `~/.claude/settings.json`. On every prompt, `inject-conventions.sh` names the convention files, specialist agents, knowledge-base indexes and the `griffin-writing-style` skill that match the prompt, and `announce-skills.sh` asks for the `**Using:**` line below. On session end, `refresh-state.sh` regenerates the dashboard. A fourth hook, `tools/check_headings.py`, runs after every file edit. The git pre-commit hook at `tools/git-hooks/pre-commit` regenerates the dashboard when framework files are staged. Reinstall with `bash hooks/install.sh` after moving the clone. See `hooks/README.md`.
+Hooks under `hooks/` are symlinked into `~/.claude/hooks/` and registered in `~/.claude/settings.json`; reinstall with `bash hooks/install.sh` after moving the clone. See `hooks/README.md`.
 
-The agent files under `agents/` are also symlinked into `~/.claude/agents/`, so they can be dispatched as Claude Code subagents by name, and the skills under `skills/` into `~/.claude/skills/` (except `code-review`, which would shadow the built-in command of that name).
+- On every prompt, `inject-conventions.sh` names the convention files, specialist agents and knowledge-base indexes that match the prompt, and names the Griffin skill to invoke (`griffin-writing-style`, `griffin-r-coding`, `griffin-draft-review`, `griffin-reviewer-response`, `griffin-funding-fit-check`). `announce-skills.sh` asks for the `**Using:**` line below.
+- After every Write or Edit, `tools/check_headings.py`, `tools/check_tells.py` and `tools/check_r_style.py` report heading failures, AI-written tells and R style breaks. Run them by hand on files a script builds, such as a Word document or a rendered report, and report a one-line Heading scan and Tell scan when handing over.
+- Before every Bash call, `guard-git.sh` blocks a commit or pull request carrying an AI attribution line and any push to a remote named `upstream`. The `attribution` setting is off as well, so commits in the lab's repositories carry no Co-Authored-By line.
+- On session end, `refresh-state.sh` regenerates the dashboard. The git pre-commit hook at `tools/git-hooks/pre-commit` does the same when framework files are staged.
+
+The agent files under `agents/` are symlinked into `~/.claude/agents/`, so they can be dispatched as Claude Code subagents by name, and the skills under `skills/` into `~/.claude/skills/` (except `code-review`, which would shadow the built-in command of that name).
 
 ## Always-load contracts
 

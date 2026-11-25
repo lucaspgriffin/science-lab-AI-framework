@@ -1,6 +1,6 @@
 # tools/
 
-## What this folder is for
+## Purpose
 
 Tools are the supporting utilities that surround the framework's text-based core. Paper §4 notes that even a fully text-defined framework benefits from a small amount of tooling for visibility (what is set up, what is missing) and orchestration (build artifacts, dashboards). This folder ships one such utility: a system-state dashboard generator that scans the framework, reports current state, and renders a browsable HTML view.
 
@@ -14,6 +14,10 @@ tools/
 ├── generate-state.js        scans the framework, writes system-state.json
 ├── system-dashboard.html    self-contained HTML viewer for system-state.json
 ├── system-state.json        machine-readable snapshot (output of generate-state.js)
+├── check_headings.py        heading-rule checker (command line, or PostToolUse hook with --hook)
+├── check_tells.py           tell scan for prose: em dashes, announcer sentences, AI vocabulary
+├── check_r_style.py         R style checker and Rscript parse check for .R, .Rmd and .qmd
+├── git-hooks/pre-commit     regenerates the dashboard when framework files are staged
 └── tracked-changes/         OOXML tracked-changes renderer used by the reviewer-reply
     ├── README.md            workflows; depends on Python 3.8+, lxml, and pandoc
     ├── apply_tracked_changes.py
@@ -24,7 +28,7 @@ tools/
 
 The HTML viewer has no external dependencies.
 
-## How to populate
+## Usage
 
 The dashboard generator runs as-is once Node.js is installed:
 
@@ -65,7 +69,7 @@ node tools/generate-state.js \
 
 **Customisation.** The generator scans for files matching expected patterns (`skills/simple/*/SKILL.md`, `skills/workflows/*/SKILL.md`, `conventions/*.md`, `conventions/*.template.md`, `agents/*.md`, `knowledge_base/*/`). If the lab restructures the framework (e.g., adds a new top-level workflow category), edit `generate-state.js` to add the new scan path. The script is short and uncomplicated; expect to spend ten minutes adapting it.
 
-## What each panel shows
+## Panels
 
 **Overview.** Total counts (skills, agents, knowledge-base topics, conventions populated) and an adopter checklist marking which framework areas are set up.
 
@@ -79,7 +83,7 @@ node tools/generate-state.js \
 
 **Setup.** Onboarding prompts under `setup/prompts/` plus a recap of which conventions are populated.
 
-## Extending the dashboard
+## Extensions
 
 The JSON shape is documented in the header comment of `generate-state.js`. To add a new panel:
 
@@ -89,7 +93,7 @@ The JSON shape is documented in the header comment of `generate-state.js`. To ad
 
 The renderers use a small `el(tag, attrs, children)` helper for DOM construction; mirror the pattern from `renderConventions` or `renderSkills`.
 
-## How it connects
+## Connections
 
 - **Skills, agents, conventions, knowledge_base.** The generator reads from all four to compile the system state. When a lab adds a skill or populates a convention template, the next `generate-state.js` run picks it up.
 - **Setup.** A useful sanity check after running setup is to regenerate the dashboard; gaps in the populated coverage indicate where setup is incomplete.
