@@ -12,7 +12,8 @@ hooks/
 ├── inject-conventions.sh     UserPromptSubmit: route prompts to always-load conventions
 ├── announce-skills.sh        UserPromptSubmit: enforce the "Using:" declaration
 ├── refresh-state.sh          Stop: regenerate the dashboard on session end
-└── guard-git.sh              PreToolUse (Bash): block AI attribution lines and pushes to upstream
+├── guard-git.sh              PreToolUse (Bash): block AI attribution lines and pushes to upstream
+└── session-context.sh        SessionStart: load private lab files from ~/.claude/griffin-lab/
 ```
 
 The checkers in `tools/` double as hooks: `check_headings.py`, `check_tells.py` and `check_r_style.py` run after every Write or Edit and report heading-rule failures, AI-written tells, and R style breaks back to the model.
@@ -38,6 +39,10 @@ Denies a `git commit`, `git tag`, `git merge` or `gh pr create` whose message ca
 ### Checkers (PostToolUse, Write|Edit)
 
 Report-only checkers in `tools/`. `check_tells.py` scans prose in Markdown, R Markdown, HTML and Word files for em dashes, announcer sentences, AI vocabulary, sentences that open with an acronym, internal labels, dated history and placeholders. `check_r_style.py` scans R scripts and notebook chunks for `setwd()`, absolute paths, `cat()` and `print()`, `tryCatch()`, `.RData`, figure titles, `=` assignment, bare `T`/`F`, mixed pipes, `pkg::` prefixes and helper wrappers, and parses `.R` files with Rscript so a syntax error is caught at the edit. Each also runs from the command line on any list of files and exits 1 on a hit.
+
+### `session-context.sh` (SessionStart)
+
+Reads every Markdown file under `~/.claude/griffin-lab/` and injects it at session start. The lab keeps its project roster there: repo paths, who the partners are, which decisions are settled. The folder lives outside any repository, so the public framework holds only the loader.
 
 ### `refresh-state.sh` (Stop)
 

@@ -26,6 +26,7 @@ When the adopter has populated the templates, these files take the non-template 
 | R or Python coding | + `conventions/code-format.md` |
 | Iterative refinement of an analysis | + `conventions/iteration-workflow.md`, `conventions/research-quality-gates.md`, `conventions/visual-review-protocol.md` (all ship opinionated) |
 | Updating the framework itself | + `conventions/system-improvement-protocol.md` (ships opinionated) |
+| Anything that leaves the session: report, memo, slides, figure for a partner, repository, app, commit | + `conventions/deliverables.md` |
 
 These contracts apply to all skills, all agents, all workflows.
 
@@ -133,6 +134,10 @@ Use `knowledge_base/SKILL.md` to ingest, compile, query, and maintain the knowle
 
 If the adopter has not yet populated the templates, point them to `setup/SKILL.md` and `setup/lab-onboarding.html`. The setup skill walks them through an interview that generates lab-specific versions of every `*.template.md` file in `conventions/`, plus stubs for any domain-specialist agents and the first knowledge-base topics.
 
+## New projects
+
+Start an R analysis project with `bash tools/new_r_project.sh <name>` (default parent `~/github`). It lays out the folders, `.Rproj`, `.gitignore`, a terse README, `data/raw/MANIFEST.md` and `scripts/00_setup.R` the way `griffin-r-coding` expects, and makes a first commit without pushing.
+
 ## Dashboard
 
 The dashboard at `tools/system-dashboard.html` reports skill inventory, agent roster, knowledge-base coverage, and convention-population status. It is intended to stay current automatically:
@@ -154,6 +159,7 @@ Hooks under `hooks/` are symlinked into `~/.claude/hooks/` and registered in `~/
 - On every prompt, `inject-conventions.sh` names the convention files, specialist agents and knowledge-base indexes that match the prompt, and names the Griffin skill to invoke (`griffin-writing-style`, `griffin-r-coding`, `griffin-draft-review`, `griffin-reviewer-response`, `griffin-funding-fit-check`). `announce-skills.sh` asks for the `**Using:**` line below.
 - After every Write or Edit, `tools/check_headings.py`, `tools/check_tells.py` and `tools/check_r_style.py` report heading failures, AI-written tells and R style breaks. Run them by hand on files a script builds, such as a Word document or a rendered report, and report a one-line Heading scan and Tell scan when handing over.
 - Before every Bash call, `guard-git.sh` blocks a commit or pull request carrying an AI attribution line and any push to a remote named `upstream`. The `attribution` setting is off as well, so commits in the lab's repositories carry no Co-Authored-By line.
+- At session start, `session-context.sh` loads the private lab files under `~/.claude/griffin-lab/` (the project roster with repo paths and settled decisions). That folder is never committed; update `projects.md` there when a project's state changes.
 - On session end, `refresh-state.sh` regenerates the dashboard. The git pre-commit hook at `tools/git-hooks/pre-commit` does the same when framework files are staged.
 
 The agent files under `agents/` are symlinked into `~/.claude/agents/`, so they can be dispatched as Claude Code subagents by name, and the skills under `skills/` into `~/.claude/skills/` (except `code-review`, which would shadow the built-in command of that name).
@@ -163,6 +169,7 @@ The agent files under `agents/` are symlinked into `~/.claude/agents/`, so they 
 These files MUST be loaded before relevant tasks, regardless of which workflow or skill is invoked:
 
 - Any writing → `conventions/voice.md` (or template)
+- Any hand-off (report, memo, slides, app, repository, commit) → `conventions/deliverables.md`
 - Manuscript work → `conventions/manuscript-format.md` (or template)
 - Reviewer reply → `conventions/reply-format.md` (or template)
 - Figures or tables → `conventions/figure-format.md` (or template)

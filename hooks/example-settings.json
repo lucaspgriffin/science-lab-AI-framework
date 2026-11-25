@@ -56,6 +56,17 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/session-context.sh"
+          }
+        ]
+      }
     ]
   },
   "attribution": {

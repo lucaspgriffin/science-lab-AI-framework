@@ -17,6 +17,7 @@ tools/
 ├── check_headings.py        heading-rule checker (command line, or PostToolUse hook with --hook)
 ├── check_tells.py           tell scan for prose: em dashes, announcer sentences, AI vocabulary
 ├── check_r_style.py         R style checker and Rscript parse check for .R, .Rmd and .qmd
+├── new_r_project.sh         scaffolds an R analysis project in the lab layout
 ├── git-hooks/pre-commit     regenerates the dashboard when framework files are staged
 └── tracked-changes/         OOXML tracked-changes renderer used by the reviewer-reply
     ├── README.md            workflows; depends on Python 3.8+, lxml, and pandoc

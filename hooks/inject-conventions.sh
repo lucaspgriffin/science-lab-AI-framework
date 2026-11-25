@@ -70,6 +70,10 @@ rules = [
      ["conventions/iteration-workflow.md",
       "conventions/research-quality-gates.md",
       "conventions/visual-review-protocol.md"]),
+    (r"\b(slides?|deck|pptx|powerpoint|report|memo|summary for|write-?up|hand ?off|hand over|"
+     r"send (it |this |them )?to|share (it |this )?with|for (the )?(collaborator|partner|funder|student|coauthor)|"
+     r"animation|gif|docx|word (file|doc)|deploy|commit|push|repo(sitory)? for)\b",
+     ["conventions/deliverables.md"]),
 ]
 
 
@@ -100,7 +104,7 @@ lab_rules = [
       "agents/quantitative-scientist.md",
       "knowledge_base/species-distribution-modelling/INDEX.md"]),
     (r"\b(glorys|oisst|mur sst|copernicus|erddap|rerddap|gebco|bathymetry|chlorophyll|"
-     r"covariate raster|extract covariates|regrid|reproject|terra|raster|sf object)",
+     r"covariate raster|extract covariates|regrid|reproject|terra|raster|sf object)\b",
      ["agents/geospatial-environmental-data-specialist.md"]),
     (r"(stable isotope|\bsia\b|δ13c|δ15n|δ34s|d13c|d15n|d34s|mixsiar|simmr|isoscape|"
      r"trophic position|trophic level|diet analysis|ontogenetic|fecal edna|gut content|"
@@ -114,6 +118,10 @@ lab_rules = [
      r"distance sampling|baci|encounter rate)",
      ["agents/marine-megafauna-anthropogenic-impacts-specialist.md",
       "knowledge_base/marine-traffic-and-anthropogenic-impacts/INDEX.md"]),
+    (r"\b(tarpon|megalops|permit\b|bonefish|snook|red ?drum|redfish|cobia|tripletail|lizardfish|milkfish|"
+     r"terrapin|diamondback|kemp'?s ridley|sea turtle|murray cod|barramundi|forage fish|menhaden)",
+     ["agents/acoustic-telemetry-specialist.md",
+      "agents/movement-ecology-specialist.md"]),
     (r"\b(grant|proposal|\bloi\b|fellowship|broader impacts|specific aims|budget justification)",
      ["agents/science-writer.md"]),
     (r"\b(reviewer|rebuttal|response to (the )?revi|revision letter|decision letter)",
