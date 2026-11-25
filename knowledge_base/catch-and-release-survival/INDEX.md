@@ -2,14 +2,14 @@
 topic: catch-and-release-survival
 domain: "Fisheries: physiology and management"
 description: Catch-and-release survival in recreational marine fisheries, focused on the lab's primary taxa (Atlantic tarpon, permit, bonefish, cobia, snook, sharks). Acoustic-detection and VPS-based post-release survival estimation, handling and air-exposure effects, predation-vs-stress mortality, recovery physiology, and management implications.
-last_updated: 2026-05-26
-article_count: 1
-ingested_sources: 2
+last_updated: 2026-11-25
+article_count: 6
+ingested_sources: 7
 owner: fisheries-stock-management-specialist
 co_owners: [acoustic-telemetry-specialist]
 ---
 
-# Topic: Catch-and-release survival
+# Catch-and-release survival
 
 ## Topic overview
 
@@ -43,14 +43,24 @@ acoustic detection process itself (see `acoustic-telemetry-methods`).
 
 | Article | Summary |
 |---|---|
-| [post-release-survival-design](articles/post-release-survival-design.md) | Study-design considerations for acoustic-detection-based C&R survival estimation. **Draft status** with verbatim extractions from Griffin et al. 2025 (Seychelles bonefish) and Casselberry et al. 2024 (Bahia Honda hammerhead-tarpon) |
+| [post-release-survival-design](articles/post-release-survival-design.md) | Study design for estimating post-release survival and predation from acoustic detections and float tracking, with Seychelles bonefish and Bahia Honda tarpon as worked cases |
+| [reflex-impairment-and-handling](articles/reflex-impairment-and-handling.md) | Fight time, air exposure and hooking effects on reflex impairment and post-release activity of giant trevally, with the reflex battery and accelerometer design |
+| [cooperative-fishery-monitoring](articles/cooperative-fishery-monitoring.md) | A guide-kept catch log at the Alphonse Group turned into a spatially explicit monitoring programme for five flats species |
+| [angling-pressure-and-catchability](articles/angling-pressure-and-catchability.md) | Whether repeated angler-fish interactions change giant trevally space use, residency and catchability, tested with telemetry, mark-recapture and catch logs |
+| [angler-knowledge-and-fishery-status](articles/angler-knowledge-and-fishery-status.md) | Angler and guide survey of local ecological knowledge on Atlantic tarpon fishing quality, threats, shark depredation and conservation support |
+| [flats-habitat-management](articles/flats-habitat-management.md) | Ten principles for bringing habitat management and restoration into conservation of bonefish, permit and tarpon flats fisheries |
 
 ## Ingested sources (`raw/`)
 
 | Source | Status | Headline finding |
 |---|---|---|
-| [Griffin_2025_BonefishPRP_Seychelles](raw/Griffin_2025_BonefishPRP_Seychelles.md) | draft | Overall PRP 13%; 75% of events at one site; 15× site effect; cryptic predation in 83% of events |
-| [Casselberry_2024_HammerheadTarpon_BahiaHonda](raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md) | draft | Combined depredation + immediate PRP 15.3% for tarpon fought > 5 min; risk peaks 5-12 min into fight, outgoing current |
+| [Griffin_2025_BonefishPRP_Seychelles](raw/Griffin_2025_BonefishPRP_Seychelles.md) | validated | Overall post-release predation 13%; 75% of events at one site, where predation was 15 times more likely; the abstract (17%) and Results (4 of 12, 33%) disagree on how many events followed a sighted predator |
+| [Griffin_2022_GiantTrevallyCR](raw/Griffin_2022_GiantTrevallyCR.md) | validated | Neither fight time nor air exposure had a detectable effect on giant trevally reflex impairment or post-release body acceleration (n = 50) |
+| [Griffin_2021_AlphonseMonitoring](raw/Griffin_2021_AlphonseMonitoring.md) | validated | Three seasons of guide catch logs at Alphonse; catch areas fairly consistent across seasons; body size declines in two species flagged for monitoring |
+| [Griffin_2024_BeyondTheHook](raw/Griffin_2024_BeyondTheHook.md) | validated | Habituated giant trevally at a floating dock held home ranges about half the size of non-habituated adults; the COVID-19 fishing closure produced no clear change |
+| [Griffin_2023_AnglerPerceptions](raw/Griffin_2023_AnglerPerceptions.md) | validated | 918 completed surveys; long-time respondents reported tarpon fishing quality declining from good to fair; water and habitat quality ranked the top threats |
+| [Griffin_2025_FlatsHabitat](raw/Griffin_2025_FlatsHabitat.md) | validated | Synthesis with no new data; habitat loss and degradation limit what catch-and-release practice alone can achieve for flats fisheries |
+| [Casselberry_2024_HammerheadTarpon_BahiaHonda](raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md) | draft | Combined depredation and immediate post-release predation of 15.3% for tarpon fought longer than 5 min; risk peaks 5 to 12 min into the fight on the outgoing current |
 
 ## Cross-references to other topics
 

@@ -2,13 +2,14 @@
 topic: stable-isotopes-and-trophic-ecology
 domain: "Methods: trophic and biochemical inference"
 description: Stable isotope analysis (SIA) and trophic-ecology inference for marine and estuarine fishes. Covers bulk δ13C / δ15N / δ34S, mixing models (MixSIAR / simmr), trophic position estimation, isoscapes, ontogenetic diet shifts, compound-specific SIA, and integration with telemetry and diet (gut content, fecal eDNA) data.
-last_updated: 2026-05-26
-article_count: 1
+last_updated: 2026-11-25
+article_count: 2
+ingested_sources: 1
 owner: stable-isotope-and-trophic-ecology-specialist
 co_owners: []
 ---
 
-# Topic: Stable isotopes and trophic ecology
+# Stable isotope ecology
 
 ## Topic overview
 
@@ -52,7 +53,14 @@ collaborative).
 
 | Article | Summary |
 |---|---|
-| [bayesian-mixing-models-for-marine-diet](articles/bayesian-mixing-models-for-marine-diet.md) | MixSIAR workflow, TDF selection, source aggregation, convergence diagnostics |
+| [bayesian-mixing-models-for-marine-diet](articles/bayesian-mixing-models-for-marine-diet.md) | Bayesian mixing models (MixSIAR) for diet source contributions in marine fishes |
+| [isoscape-assignment-of-foraging-areas](articles/isoscape-assignment-of-foraging-areas.md) | Lizardfish-baseline δ13C and δ15N isoscapes fitted in INLA and used to assign tarpon fin and plasma to foraging areas within telemetry-constrained search areas |
+
+## Ingested sources (`raw/`)
+
+| Source | Status | Headline finding |
+|---|---|---|
+| [Griffin_2026_TarponForagingLandscapes](raw/Griffin_2026_TarponForagingLandscapes.md) | validated (correction to the fin adjustment in preparation) | Assignment of 417 tarpon with 85 tracked; discrete foraging regions support large-scale migrations; northern Gulf captures assign to the northern Gulf across the sensitivity grid |
 
 ## Cross-references to other topics
 

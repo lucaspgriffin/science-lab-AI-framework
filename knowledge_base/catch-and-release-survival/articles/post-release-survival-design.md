@@ -3,7 +3,7 @@ title: "Study design for acoustic-telemetry-based catch-and-release survival est
 slug: post-release-survival-design
 domain: "Fisheries: physiology and management"
 aliases: ["C&R survival", "post-release mortality", "acoustic survival"]
-related: [detection-efficiency-and-range-testing, predation-mediated-mortality]
+related: [detection-efficiency-and-range-testing, predator-prey-spatial-overlap, reflex-impairment-and-handling]
 sources:
   - raw/Griffin_2025_BonefishPRP_Seychelles.md
   - raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md
@@ -12,18 +12,10 @@ sources:
   - raw/Griffin_2018_TarponCooperative.md
 status: draft
 origin: literature-extractor (manual via pdftotext; full text available for Griffin 2025 and Casselberry 2024)
-last_updated: 2026-05-26
+last_updated: 2026-11-25
 ---
 
-# Study design for acoustic-telemetry-based catch-and-release survival estimation
-
-> **Draft article** with verbatim extractions from Griffin et al. 2025
-> ([raw/Griffin_2025_BonefishPRP_Seychelles.md](../raw/Griffin_2025_BonefishPRP_Seychelles.md))
-> and Casselberry et al. 2024
-> ([raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md](../raw/Casselberry_2024_HammerheadTarpon_BahiaHonda.md)).
-> Older referenced sources (Holder 2020, Brownscombe 2017, Griffin 2018) are still to be
-> ingested. Promote to `published` after the `extraction-validator` agent (or Lucas)
-> confirms claim-citation alignment.
+# Post-release survival design
 
 ## Summary
 
@@ -111,15 +103,14 @@ For broader cross-system comparisons, Griffin et al. 2025 also synthesises:
   release time of approximately 11 minutes) which confounds findings when applied to a
   C&R context." [Griffin et al. 2025, §1, p. 2]
 
-The Holder et al. (2020) permit study at the Florida Keys established the lab's
-operational framework for VPS-based positional analysis of post-release predation; that
-extraction is still TODO and would refine the methodological detail in this article
-when ingested.
+The Holder et al. (2020) permit study in the Florida Keys set out the lab's approach to
+positional analysis of post-release predation from a fine-scale positioning array. It
+has not yet been extracted into this knowledge base.
 
-### Floats and visual tracking as an alternative to VPS
+### Float tracking
 
-Where a VPS array is logistically infeasible (open flats, large reef expanses, lack of
-HR2 infrastructure), the lab has used **visual-track-with-float** designs to monitor PRP
+Where a VPS array is logistically infeasible (open flats, large reef expanses, no receivers
+of the HR2 type), the lab has used **visual-track-with-float** designs to monitor PRP
 in real time. The Griffin et al. (2025) Seychelles bonefish design is the current
 reference:
 
@@ -135,9 +126,12 @@ reference:
 
 The 20-minute tracking window is the operative inference horizon: predation events
 outside that window are right-censored. The Griffin 2025 design also documented "cryptic
-predation": 83% of predation events were NOT preceded by an observed predator, meaning
-visual-observer-based predator-presence covariates substantially underestimate true
-predator density.
+predation", where most predation events were not preceded by a sighted predator. The
+paper reports this share inconsistently. Its abstract says "only 17 % of predation events
+were preceded by observing potential predators", while its Results state that "Four of the
+12 PRP events (33 %) occurred after predators were observed in the vicinity" [Griffin et
+al. 2025, p. 1 and p. 3]. Either way, observer-recorded predator presence is a weak
+covariate for true predation risk on these flats.
 
 ### VPS-window detection
 
@@ -150,12 +144,12 @@ support.
 
 ## Methods and approaches
 
-The lab's default sequence for a new acoustic-survival study: (1) confirm array detection
-efficiency via stationary range tests and sentinel tags; (2) compute the per-individual
+The lab's default sequence for a new acoustic-survival study has five steps. First, confirm array detection
+efficiency via stationary range tests and sentinel tags. Second, compute the per-individual
 detection horizon (median time to last detection for known-mortality controls vs known-
-survival controls); (3) fit a known-fate or Cormack-Jolly-Seber framework with detection
-covariates; (4) report survival estimates with explicit acoustic-window scope (e.g., "30-day
-post-release survival"); (5) decompose chronic mortality where possible via paired studies
+survival controls). Third, model survival with a known-fate or Cormack-Jolly-Seber framework with detection
+covariates. Fourth, report survival estimates with explicit acoustic-window scope (e.g., "30-day
+post-release survival"). Fifth, decompose chronic mortality where possible via paired studies
 or long-life-tag deployments.
 
 ## Open questions
@@ -169,7 +163,7 @@ or long-life-tag deployments.
 
 ## Connections
 
-- **Related to**: [[predation-mediated-mortality]].
+- **Related to**: [[predator-prey-spatial-overlap]]. Shark and game-fish co-occurrence at release sites sets the predation risk that post-release survival studies measure.
 - **Depends on**: [[detection-efficiency-and-range-testing]].
 - **Informs**: total-mortality budgets for recreational fishery assessments (route to
   `fisheries-stock-management-specialist`).
@@ -205,10 +199,3 @@ or long-life-tag deployments.
   PRP comparison.
 - **Moxham et al. 2019.** Cited via Griffin et al. 2025 for the Seychelles
   surgically-tagged baseline.
-
-## Template usage notes
-
-This is a `draft` article: verbatim extractions for the headline 2024-2025 papers are in
-place. Promote to `published` after `extraction-validator` confirms claim-citation
-alignment for the ingested sources AND after Holder 2020, Brownscombe 2017, and Griffin
-2018 are also ingested with `raw/` source files.

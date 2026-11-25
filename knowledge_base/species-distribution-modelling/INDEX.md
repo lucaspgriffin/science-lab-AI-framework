@@ -2,13 +2,14 @@
 topic: species-distribution-modelling
 domain: "Methods: spatial inference"
 description: Species distribution modelling and integrated SDM (iSDM) for marine fishes, with emphasis on INLA-SPDE / inlabru frameworks, boosted regression trees (BRT), and the integration of telemetry, mark-recapture, and fishery-dependent data with marine environmental covariates. Includes climate-projection workflows and extrapolation diagnostics.
-last_updated: 2026-05-26
-article_count: 3
+last_updated: 2026-11-25
+article_count: 4
+ingested_sources: 1
 owner: species-distribution-modelling-specialist
 co_owners: []
 ---
 
-# Topic: Species distribution modelling
+# Species distribution modelling
 
 ## Topic overview
 
@@ -52,8 +53,15 @@ environmental covariates. Does not cover environmental data acquisition itself (
 | Article | Summary |
 |---|---|
 | [integrated-sdm-with-inla-spde](articles/integrated-sdm-with-inla-spde.md) | Farchadi-style iSDM workflow with shared 2D SPDE, 1D SPDE covariate smoothers, and dataset-specific intercepts |
-| [1d-spde-matern-smoothers](articles/1d-spde-matern-smoothers.md) | 1D SPDE Matérn smoothers as a non-linear-covariate replacement for manual polynomials; cobia-iSDM DIC reduction case |
-| [hurdle-brt-habitat-suitability](articles/hurdle-brt-habitat-suitability.md) | Two-stage hurdle BRT (prevalence + intensity) for zero-inflated fishery-independent abundance data |
+| [1d-spde-matern-smoothers](articles/1d-spde-matern-smoothers.md) | 1D SPDE Matérn smoothers as a replacement for manual polynomials on non-linear covariates |
+| [hurdle-brt-habitat-suitability](articles/hurdle-brt-habitat-suitability.md) | Two-stage hurdle BRT (prevalence and intensity) for zero-inflated fishery-independent abundance data |
+| [machine-learning-resource-selection](articles/machine-learning-resource-selection.md) | Random forest resource selection from acoustic telemetry centres of activity for four shark species and tiger shark prey, with spatial cross-validation and mapped predictions |
+
+## Ingested sources (`raw/`)
+
+| Source | Status | Headline finding |
+|---|---|---|
+| [Griffin_2021_SharkRSF_ML](raw/Griffin_2021_SharkRSF_ML.md) | validated | Random forests tuned by spatial cross-validation reached 80 to 95% accuracy on a 40% holdout; predictions mapped on a 200 m grid across Buck Island Reef National Monument |
 
 ## Cross-references to other topics
 
@@ -71,7 +79,7 @@ environmental covariates. Does not cover environmental data acquisition itself (
 
 Foundational references:
 
-- **Farchadi et al. 2025**, "[TODO: full citation]". The blue-shark iSDM framework the
+- **Farchadi et al. 2025** (full citation not yet verified). The blue-shark iSDM framework the
   lab's cobia SDM is built on. Reference implementation:
   `~/github/BlueShark_ISDM/`.
 - **Krainski, Gomez-Rubio, Bakka, Lenzi, Castro-Camilo, Simpson, Lindgren, Rue 2019.**

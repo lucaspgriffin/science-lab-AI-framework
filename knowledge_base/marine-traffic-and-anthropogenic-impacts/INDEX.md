@@ -2,13 +2,14 @@
 topic: marine-traffic-and-anthropogenic-impacts
 domain: "Conservation: human-wildlife interaction"
 description: AIS-based vessel-traffic exposure modelling, vessel-strike risk for marine megafauna (whales, whale sharks, sea turtles), wildlife-watching tourism compliance, biologger workflows, and behavioural-response analyses to anthropogenic stressors.
-last_updated: 2026-05-26
-article_count: 1
+last_updated: 2026-11-25
+article_count: 2
+ingested_sources: 1
 owner: marine-megafauna-anthropogenic-impacts-specialist
 co_owners: []
 ---
 
-# Topic: Marine traffic and anthropogenic impacts
+# Marine anthropogenic impacts
 
 ## Topic overview
 
@@ -45,7 +46,7 @@ population level (route to SDM Specialist).
 - **Co-occurrence vs interaction**. Co-occurrence (whales and ships in the same cell) is
   necessary but not sufficient for strike risk; strike-rate inference requires accounting
   for animal occupancy, vessel speed, vessel size, and detection lag.
-- **Compliance vs non-impact**. In wildlife-watching contexts, an encounter that follows
+- **Compliance vs non-impact**. In wildlife-watching contexts, an encounter that keeps to
   the regulatory guidelines is "compliant"; an encounter where the animal does not
   respond is "non-impactful". These are not the same.
 - **Biologger sensor suites**. CATS, OpenTag, accelerometer-magnetometer-depth (IMU)
@@ -56,6 +57,13 @@ population level (route to SDM Specialist).
 | Article | Summary |
 |---|---|
 | [vessel-strike-risk-from-ais-data](articles/vessel-strike-risk-from-ais-data.md) | Workflow for translating AIS vessel-traffic data into megafauna-strike risk classification |
+| [cold-stunning-and-ocean-warming](articles/cold-stunning-and-ocean-warming.md) | Sea surface temperature as the driver of Kemp's ridley cold-stun strandings in Cape Cod Bay, with sliding-window climate analysis, random forest screening and a Bayesian count model |
+
+## Ingested sources (`raw/`)
+
+| Source | Status | Headline finding |
+|---|---|---|
+| [Griffin_2019_KempsRidleyColdStun](raw/Griffin_2019_KempsRidleyColdStun.md) | validated | Warmer late October to early November SST in the Gulf of Maine predicted high cold-stun years, while hatchling production did not; projected posterior mean of 2,349 cold-stunned turtles per year by 2031 |
 
 ## Cross-references to other topics
 

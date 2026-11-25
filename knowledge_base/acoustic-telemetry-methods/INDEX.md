@@ -2,14 +2,14 @@
 topic: acoustic-telemetry-methods
 domain: Methods: detection and survey
 description: Passive acoustic telemetry for marine and estuarine fish (tarpon, cobia, bonefish, permit, snook, sharks) and sea turtles. Receiver array design, VPS positioning, detection-efficiency modelling, tag specification, deployment logistics, cooperative networks (FACT, iTAG, OTN, ACT, MATOS), and detection-history construction.
-last_updated: 2026-05-26
-article_count: 2
-ingested_sources: 1
+last_updated: 2026-11-25
+article_count: 3
+ingested_sources: 2
 owner: acoustic-telemetry-specialist
 co_owners: []
 ---
 
-# Topic: Acoustic telemetry methods
+# Acoustic telemetry methods
 
 ## Topic overview
 
@@ -49,14 +49,16 @@ integration with environmental covariates. Does not cover downstream behavioural
 
 | Article | Summary |
 |---|---|
-| [detection-efficiency-and-range-testing](articles/detection-efficiency-and-range-testing.md) | Stationary and drift-test approaches to detection-efficiency characterisation; integration into spatial-ecology inference |
-| [region-misclassification-data-qa](articles/region-misclassification-data-qa.md) | Empirical data-QA pattern for cooperative-network telemetry feeds; upstream region labels do not always match station coordinates |
+| [detection-efficiency-and-range-testing](articles/detection-efficiency-and-range-testing.md) | Stationary and drift-test approaches to detection-efficiency characterisation and their use in spatial-ecology inference |
+| [region-misclassification-data-qa](articles/region-misclassification-data-qa.md) | Data checks for cooperative-network telemetry feeds, where upstream region labels do not always match station coordinates |
+| [seasonal-presence-from-cooperative-networks](articles/seasonal-presence-from-cooperative-networks.md) | Turning pooled local and cooperative-network detections into arrival, departure, residence and daily occupancy series, with false-detection filtering, time-to-event models and random forests; tarpon phenology in the Florida Keys |
 
 ## Ingested sources (`raw/`)
 
 | Source | Status | Headline finding |
 |---|---|---|
-| [Lennox_2024_GloballyCoordinatedTracking](raw/Lennox_2024_GloballyCoordinatedTracking.md) | stub (abstract-only; paywalled, no local PDF) | Cooperative acoustic networks (FACT, iTAG, OTN, ACT, MATOS) enable unexpected long-distance detections that focal studies cannot capture |
+| [Griffin_2022_TarponPhenology](raw/Griffin_2022_TarponPhenology.md) | validated | All 47 adult tarpon detection profiles in the Florida Keys were seasonal residents; mean residence 51 d, most adults arriving in April and leaving in June |
+| [Lennox_2024_GloballyCoordinatedTracking](raw/Lennox_2024_GloballyCoordinatedTracking.md) | stub (abstract only, no local PDF) | Cooperative acoustic networks yield long-distance detections that focal studies cannot capture |
 
 ## Cross-references to other topics
 

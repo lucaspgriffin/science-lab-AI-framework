@@ -2,14 +2,14 @@
 topic: movement-ecology-analysis
 domain: "Methods: behavioural and spatial inference"
 description: Analytical layer for movement-ecology inference: home range and utilisation distributions, state-space models for irregular telemetry, hidden Markov models for behavioural-state segmentation, step-selection analyses, network-based connectivity, and migratory-connectivity metrics. Marine and aquatic taxa focus.
-last_updated: 2026-05-26
-article_count: 3
-ingested_sources: 2
+last_updated: 2026-11-25
+article_count: 6
+ingested_sources: 5
 owner: movement-ecology-specialist
 co_owners: [acoustic-telemetry-specialist]
 ---
 
-# Topic: Movement ecology analysis
+# Movement ecology analysis
 
 ## Topic overview
 
@@ -29,7 +29,7 @@ construction (see `acoustic-telemetry-methods`) or population-scale distribution
 - **Home range / utilisation distribution**. KDE, AKDE (autocorrelated KDE), dynamic
   Brownian bridges, T-LoCoH, MCPs. Choice of method depends on data autocorrelation
   structure and the question.
-- **Behavioural-state segmentation**. HMMs and SSMs that partition movement into discrete
+- **Behavioural-state segmentation**. Hidden Markov models (HMMs) and state-space models that partition movement into discrete
   states (resident vs transit, foraging vs migrating) and estimate covariates on
   transition probabilities.
 - **Step selection**. The probability that an animal selects an available environmental
@@ -46,15 +46,21 @@ construction (see `acoustic-telemetry-methods`) or population-scale distribution
 | Article | Summary |
 |---|---|
 | [home-range-and-utilisation-distributions](articles/home-range-and-utilisation-distributions.md) | KDE, AKDE, and the autocorrelation pitfalls that govern method choice |
-| [resource-selection-functions-with-clogit](articles/resource-selection-functions-with-clogit.md) | Matched case-control RSFs via `survival::clogit(method = "efron")`; cross-validation pattern with manual covariate prediction |
-| [migratory-contingents-and-entrainment](articles/migratory-contingents-and-entrainment.md) | Entrainment hypothesis for migratory marine fish; three Western Atlantic Atlantic tarpon contingents; collapse-recovery dynamics. **Draft status** from Griffin et al. 2025 (*Fish and Fisheries*) verbatim extraction |
+| [resource-selection-functions-with-clogit](articles/resource-selection-functions-with-clogit.md) | Matched case-control resource selection functions fitted with conditional logistic regression, with a cross-validation pattern |
+| [migratory-contingents-and-entrainment](articles/migratory-contingents-and-entrainment.md) | Entrainment hypothesis for migratory marine fish; Western Atlantic tarpon contingents, vagrancy and collapse-recovery dynamics |
+| [site-fidelity-on-reef-flats](articles/site-fidelity-on-reef-flats.md) | Residency index, dispersal distance, home range and network communities for bonefish on two fringing reef flats in Culebra |
+| [sea-turtle-space-use-in-protected-areas](articles/sea-turtle-space-use-in-protected-areas.md) | Home ranges and relative habitat selection of immature green turtles inside a Caribbean marine protected area |
+| [predator-prey-spatial-overlap](articles/predator-prey-spatial-overlap.md) | Co-occurrence, nonrandom arrival tests and random forest models of overlap between large sharks and tarpon and permit in the Florida Keys |
 
 ## Ingested sources (`raw/`)
 
 | Source | Status | Headline finding |
 |---|---|---|
-| [Griffin_2025_EntrainmentHypothesis](raw/Griffin_2025_EntrainmentHypothesis.md) | draft | Three Western Atlantic tarpon contingents; mixing at Mississippi Delta and South Florida; adult vagrancy in NW Europe; global landings decline > 80% (1965–2007) |
-| [vanZinnicqBergmann_2024_IntraguildPredatorCommunity](raw/vanZinnicqBergmann_2024_IntraguildPredatorCommunity.md) | draft (abstract-only) | IBM + acoustic telemetry on 8 elasmobranch species, Bimini; prey select habitats based on safety > food; asymmetric IGP drives spatial separation |
+| [Griffin_2025_EntrainmentHypothesis](raw/Griffin_2025_EntrainmentHypothesis.md) | validated | Three Western Atlantic tarpon contingents with mixing areas; vagrant adults far from their contingent; five entrainment hypotheses evaluated |
+| [Griffin_2023_BonefishCulebra](raw/Griffin_2023_BonefishCulebra.md) | validated | 43 bonefish; mean residency 0.78, dispersal never beyond 3.52 km, mean MCP 0.65 km², every fish in the network community of its capture area |
+| [Griffin_2020_GreenTurtleRSF](raw/Griffin_2020_GreenTurtleRSF.md) | validated | Small, overlapping home ranges below 3 km²; selection highest in shallow water near seagrass, in reef zones by day and night and lagoon zones at night |
+| [Griffin_2022_PredatorPreyLandscapes](raw/Griffin_2022_PredatorPreyLandscapes.md) | validated | Potential predation risk heterogeneous in space and time; nonrandom shark arrival and large effect sizes at the Bahia Honda tarpon prespawning aggregation |
+| [vanZinnicqBergmann_2024_IntraguildPredatorCommunity](raw/vanZinnicqBergmann_2024_IntraguildPredatorCommunity.md) | draft (abstract only) | Individual-based model with acoustic telemetry on eight elasmobranch species at Bimini; prey favour safety over food |
 
 ## Cross-references to other topics
 
