@@ -39,7 +39,8 @@ RULES = [
     ("idiom", re.compile(
         r"\b(where the data sit|rests? on (few|a handful)|the signature of|flagged, not moved|"
         r"carr(y|ies) a value|rather than anything|this (notebook|document|report|script) (reads|describes|presents|walks)|"
-        r"used by most steps below|shown (later|below)|as (we|you) will see)\b", re.I)),
+        r"used by most steps below|shown (later|below)|as (we|you) will see|"
+        r"on the strength of|placed (spawning|the|it|them)|every (study|paper) since|(has|have) worked from|a first pass|(leaves?|leaving) (some )?room for|holds? (both|it|them) fixed|fits? an? |(would|will) welcome|enough to test|too few to say|carr(y|ies) (weight|the)|belongs? in the framing)\b", re.I)),
     ("sentence starts with acronym", re.compile(
         r"(?:(?<=^)|(?<=[.!?]\s)|(?<=[.!?]\s\s))(?!(?:OK|US|UK|USA|RNA|DNA|PCR)\b)([A-Z]{2,}[A-Za-z0-9]*)\b(?=\s+[a-z])", re.M)),
     ("internal label", re.compile(
