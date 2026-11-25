@@ -2,6 +2,7 @@
 name: paper-research
 description: |
   End-to-end AI-assisted workflow for taking analysis findings and producing a publication-ready manuscript reference document. Use this skill whenever the user mentions: writing a paper, preparing a manuscript, needing background literature, filling in an introduction or discussion section, turning results into a publishable paper, or needing to contextualize research findings within existing literature. Also trigger when users ask for help synthesizing literature for any section of a scientific paper, or want to prepare context documents for manuscript drafting. The skill handles everything from theme extraction through literature synthesis, contradiction-checking, and structured reference document generation: the user should NOT need to manually find or upload PDFs.
+cost: heavy
 ---
 
 # Paper Research Workflow

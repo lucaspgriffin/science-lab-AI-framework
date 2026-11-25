@@ -2,6 +2,7 @@
 name: reviewer-reply-pipeline
 description: |
   Orchestrates the end-to-end reviewer-reply workflow from raw reviewer comments to a submission-ready response document and tracked-changes manuscript. Chains reviewer-reply-planning and reviewer-reply-drafting in sequence, manages state, and coordinates handoffs. Use this skill whenever the user wants to run the full reply workflow, resume from a checkpoint, redraft individual comments, or check status. Trigger phrases include "address the reviewer comments", "respond to the reviewers", "where are we on the reply", "redraft my reply to R2-C3", "build the final reply docx", or "resume the reply workflow". The orchestrator manages a JSON state file alongside the manuscript and supports targeted re-entry on individual comments without redrafting the whole reply.
+cost: heavy
 ---
 
 # Reviewer Reply Pipeline: Orchestrator

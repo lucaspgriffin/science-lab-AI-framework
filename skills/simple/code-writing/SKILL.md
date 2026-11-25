@@ -2,6 +2,7 @@
 name: code-writing
 description: |
   Produces well-structured analysis scripts (R or Python) following the lab's coding conventions, with embedded diagnostics and inline output at every stage. Use this skill when the user mentions: implementing an analysis, writing code for a model, building analysis scripts, coding the analysis, fitting a model, or producing scripts from a plan. Also trigger when an analysis plan exists and the user wants to move to code. The skill follows a nine-phase sequence from data inspection through model fitting, diagnostics, predictions, sensitivity, and reporting. All scripts follow conventions from `conventions/code-format.template.md` with section headers, inline output, and numbered sequential files. Works standalone or as the second step in the analysis-pipeline.
+cost: medium
 ---
 
 # Code Writing Skill

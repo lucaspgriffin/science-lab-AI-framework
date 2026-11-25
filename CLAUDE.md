@@ -135,14 +135,17 @@ If the adopter has not yet populated the templates, point them to `setup/SKILL.m
 
 ## Dashboard
 
-A system-state dashboard can be generated via `tools/generate-state.js` and viewed in any browser:
+The dashboard at `tools/system-dashboard.html` reports skill inventory, agent roster, knowledge-base coverage, and convention-population status. It is intended to stay current automatically:
+
+- A git pre-commit hook at `tools/git-hooks/pre-commit` regenerates the dashboard whenever framework files (`skills/`, `agents/`, `knowledge_base/`, `conventions/`, `setup/`) are staged for commit, and stages the regenerated artifacts alongside the commit.
+- **Operating instruction for any AI instance**: after modifying any file under `skills/`, `agents/`, `knowledge_base/`, `conventions/`, or `setup/`, run `node tools/generate-state.js` before reporting the task complete. Treat this as part of the task, not a separate request. The pre-commit hook is a backstop, not a replacement.
+
+Manual regeneration (for cases where the hook is not installed or the AI is reviewing without modifying):
 
 ```bash
 node tools/generate-state.js
 open tools/system-dashboard.html
 ```
-
-The dashboard reports skill inventory, agent roster, knowledge-base coverage, and convention-population status. Useful for tracking what is set up and what remains.
 
 ## Always-load contracts
 
@@ -175,6 +178,32 @@ Never start a sentence with an acronym in any document. Spell it out or put a wo
 ## Journal check (hard rule)
 
 Before calling a manuscript section finished, and without being asked, read recent papers from the target journal in full, on the same topic and on the same methods. Compare the Introduction, Methods, Results and Discussion for length, paragraph and sentence length, voice, hedging, statistics reporting and how problems are reported, and say which papers were read. Never state that a draft matches a journal without having done this. In Methods, an instrument problem gets one plain line, with detail in the Supporting Information. Supporting Information stays below the main text in the same Word file until submission.
+
+## Skill-firing declaration
+
+At the start of every substantive response, include a single tight line in this format, before any other prose:
+
+```
+**Using:** <comma-separated list>
+```
+
+List what is actually being invoked for the turn, drawn from:
+
+- Skills (e.g., `manuscript-writing`, `code-review`, `analysis-pipeline`)
+- Agents invoked (e.g., `quantitative-scientist`, `lab-director`, `literature-extractor`)
+- Conventions loaded (e.g., `voice.md`, `research.md`, `code-format.md`): always-load contracts plus any others read for this turn
+- Knowledge-base articles consulted (e.g., `acoustic-telemetry/detection-efficiency`)
+- Workflow phases when a multi-phase skill is active (e.g., `paper-research Phase 2`)
+
+Rules:
+
+- One line, comma-separated. Do not break out into bullets.
+- List only what is genuinely in use for this turn, not the full catalogue.
+- Skip the line for trivial replies (one-line clarifications, acknowledgements) and for plain conversation where no skill, agent, convention or knowledge-base article is in play.
+- Place the line at the very top of the response.
+- Do not mention this declaration mechanism inside the response itself.
+
+The purpose is transparency. The user sees which parts of the framework are being applied to their request, which builds trust, makes it easy to spot when the wrong skill has fired, and helps newcomers learn what the framework is doing under the hood.
 
 ## Operating principles
 

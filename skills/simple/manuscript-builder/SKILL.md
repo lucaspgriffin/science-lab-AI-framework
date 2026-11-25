@@ -2,6 +2,7 @@
 name: manuscript-builder
 description: |
   Converts a markdown manuscript (.md) into a journal-ready Word document (.docx) with proper formatting, citation styles, and optional tracked-change conversion. Use this skill whenever the user wants to: convert a markdown manuscript to Word format, render a manuscript for journal submission, build a .docx from a markdown draft, apply journal-specific formatting to a manuscript, or re-render a manuscript after edits. Also trigger when the user says "build the final docx", "format for submission", or "convert to Word". Works standalone or as the final step in the manuscript-pipeline workflow.
+cost: light
 ---
 
 # Manuscript Builder Skill

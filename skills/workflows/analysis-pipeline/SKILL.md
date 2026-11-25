@@ -2,6 +2,7 @@
 name: analysis-pipeline
 description: |
   Orchestrates the end-to-end analysis workflow from planning through implementation and review to finalized results. Chains analysis-planning, code-writing, and code-review skills in sequence with state tracking and user checkpoints. Use this skill when the user wants to run the full analysis workflow, resume from a checkpoint, check pipeline status, or coordinate between planning, coding, and review phases. Trigger phrases include: "run the full analysis workflow", "where are we in the analysis", "review this code", "run another review round", "finalize the analysis", or "resume the analysis from where we left off". The orchestrator manages state, tracks completion, and coordinates handoffs between skills. Each component skill remains independently usable.
+cost: heavy
 ---
 
 # Analysis Pipeline Orchestrator

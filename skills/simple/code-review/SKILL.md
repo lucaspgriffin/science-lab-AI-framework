@@ -2,6 +2,7 @@
 name: code-review
 description: |
   Hybrid code review combining automated diagnostic execution with parallel reviewer sub-agents for scientific analyses. Use this skill when the user mentions: reviewing code, checking diagnostics, code review, validating an analysis, checking model assumptions, reviewing scripts, or wanting feedback on analysis code. Also trigger when users have completed an analysis and want quality assurance before finalizing. The skill first runs automated checks (execute scripts, capture diagnostics), then launches 3 parallel sub-agent reviewers (statistical methods, scientific interpretation, code quality) who provide independent assessments. Findings are synthesized into a priority-ranked report with inline code suggestions. Supports iterative review-revision cycles. Works standalone or as part of the analysis-pipeline.
+cost: medium
 ---
 
 # Code Review Skill (Hybrid)

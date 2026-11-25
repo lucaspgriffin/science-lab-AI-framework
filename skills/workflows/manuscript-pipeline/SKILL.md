@@ -2,6 +2,7 @@
 name: manuscript-pipeline
 description: |
   Orchestrates the end-to-end manuscript workflow from research through review to submission-ready .docx. Chains paper-research, expert-review, and manuscript-builder skills in sequence. Use this skill when the user wants to run the full pipeline, resume from a checkpoint, or coordinate between research, review, and formatting phases. Trigger phrases include: "run the full manuscript workflow", "where are we in the pipeline", "start manuscript review", "run another review round", "build the final docx", or "finalize the manuscript". The orchestrator manages state, tracks completion, and coordinates handoffs between skills. Each component skill remains independently usable.
+cost: heavy
 ---
 
 # Manuscript Pipeline Orchestrator

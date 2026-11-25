@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# pre-commit hook: regenerate the dashboard whenever framework files change.
+#
+# Install once per clone:
+#   ln -sf ../../tools/git-hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x tools/git-hooks/pre-commit
+#
+# Skip on a single commit (e.g., for a docs-only typo fix):
+#   SKIP_DASHBOARD=1 git commit ...
+#
+
+set -e
+
+if [ "${SKIP_DASHBOARD:-0}" = "1" ]; then
+  exit 0
+fi
+
+# Look at what's staged. Only regenerate if framework surface files changed.
+changed=$(git diff --cached --name-only | grep -E '^(skills|agents|knowledge_base|conventions|setup)/' || true)
+
+if [ -z "$changed" ]; then
+  exit 0
+fi
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "pre-commit: node not found; skipping dashboard regeneration." >&2
+  echo "pre-commit: install Node 18+ or set SKIP_DASHBOARD=1 to bypass." >&2
+  exit 0
+fi
+
+echo "pre-commit: framework files changed; regenerating dashboard..."
+node tools/generate-state.js >&2
+
+# Stage the regenerated dashboard artifacts so they ride the same commit.
+git add tools/system-state.json tools/system-dashboard.html
+
+exit 0

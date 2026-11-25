@@ -179,6 +179,7 @@ function describeMd(absPath) {
     path: relFromRoot(absPath),
     frontmatter_name: fm.name || null,
     description: fm.description ? collapse(fm.description) : null,
+    cost: fm.cost ? fm.cost.trim().toLowerCase() : null,
     title: firstHeading(body),
     summary: firstParagraph(body),
     size_bytes: stat ? stat.size : 0,
@@ -202,10 +203,14 @@ function scanSkills(category) {
     const skillFile = path.join(dir, entry.name, 'SKILL.md');
     if (!statSafe(skillFile)) continue;
     const info = describeMd(skillFile);
+    const cost = info.cost && ['light', 'medium', 'heavy'].includes(info.cost)
+      ? info.cost
+      : 'unknown';
     out.push({
       name: entry.name,
       category,
-      ...info
+      ...info,
+      cost
     });
   }
   out.sort((a, b) => a.name.localeCompare(b.name));
@@ -379,6 +384,8 @@ function scanFramework() {
       if (line.match(/^```/)) break;
       const h1 = line.match(/^#\s+([^#].+?)\s*$/);
       if (h1) { meta.name = h1[1].trim(); break; }
+      const htmlH1 = line.match(/<h1[^>]*>([^<]+?)<\/h1>/);
+      if (htmlH1) { meta.name = htmlH1[1].trim(); break; }
     }
   }
   return meta;
@@ -398,10 +405,17 @@ const framework = scanFramework();
 
 const populatedConventions = conventions.filter(c => c.populated).map(c => c.name);
 
+const allSkills = [...skillsSimple, ...skillsWorkflows];
+const countCost = (tier) => allSkills.filter(s => s.cost === tier).length;
+
 const totals = {
   skills_simple: skillsSimple.length,
   skills_workflows: skillsWorkflows.length,
   skills: skillsSimple.length + skillsWorkflows.length,
+  cost_light: countCost('light'),
+  cost_medium: countCost('medium'),
+  cost_heavy: countCost('heavy'),
+  cost_unknown: countCost('unknown'),
   agents_core: agents.core.length,
   agents_templates: agents.templates.length,
   kb_topics: kb.topics.length,

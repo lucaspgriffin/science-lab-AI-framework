@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/inject-conventions.sh" },
+          { "type": "command", "command": "~/.claude/hooks/announce-skills.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/refresh-state.sh" }
+        ]
+      }
+    ]
+  }
+}

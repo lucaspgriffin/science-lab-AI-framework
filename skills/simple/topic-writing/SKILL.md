@@ -2,6 +2,7 @@
 name: topic-writing
 description: >
   Research a topic and write about it: syntheses, literature reviews, perspectives, policy briefs, technical reports, blog posts, or background documents. Triggers: "write a synthesis on", "research and summarize", "write a perspective piece", "draft a policy brief", "write a blog post about", "put together a review of", "what does the literature say about". Not for journal manuscripts from analysis findings (use paper-research) or manuscript review (use expert-review).
+cost: light
 ---
 
 # Topic Writing: Research Synthesis & General Science Writing

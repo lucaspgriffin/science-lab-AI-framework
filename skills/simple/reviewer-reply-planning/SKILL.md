@@ -2,6 +2,7 @@
 name: reviewer-reply-planning
 description: |
   Parses reviewer comments and a manuscript, classifies every comment by action type, and produces a triage plan with proposed edits and replies. Use this skill whenever the user mentions: addressing reviewer comments, planning a manuscript revision, classifying review feedback, triaging reviewer comments, building a reply plan, or starting the reviewer-reply workflow. Also trigger when users upload a manuscript .docx alongside a reviewer comments .docx and ask what to do with them. This skill produces a structured plan: it does NOT yet draft the final reply or apply edits to the manuscript. Use reviewer-reply-drafting next, or run the full reviewer-reply-pipeline. The planning step front-loads the user's input via AskUserQuestion on comments needing judgement (RESTRUCTURE, NEW-ANALYSIS, JUDGEMENT) so the drafting skill can run without further interruption.
+cost: medium
 ---
 
 # Reviewer Reply: Planning Skill

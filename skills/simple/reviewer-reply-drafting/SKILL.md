@@ -2,6 +2,7 @@
 name: reviewer-reply-drafting
 description: |
   Drafts the final reviewer reply document and applies tracked-change edits to the manuscript, given a frozen plan from reviewer-reply-planning. Use this skill whenever the user mentions: drafting the reply to reviewers, building the response document, applying tracked changes from the reply plan, finalizing the reviewer response, or rendering the revised manuscript with tracked changes. Also trigger when users say "draft the reply now", "build the response doc", or "apply the planned edits to the manuscript". Requires a [title]_reply_plan.md as input: if no plan exists, route to reviewer-reply-planning first. Produces two .docx outputs (reply doc + revised manuscript with tracked changes) via manuscript-builder. Supports targeted re-entry on individual comments without redrafting the whole reply.
+cost: medium
 ---
 
 # Reviewer Reply: Drafting Skill

@@ -2,6 +2,7 @@
 name: research-iterate
 description: |
   Iteratively refines a research analysis through multi-specialist critique and quality gates until it reaches publication-ready quality. Use this skill when the user says: "iterate the analysis", "refine until publication-ready", "run through quality gates", "bring this to publication quality", or asks for a defensible, multi-round refinement of existing outputs. The skill orchestrates the Lab Director + specialist agents through a six-phase loop (readiness assessment, planning, implementation, parallel critique, arbitration, and self-update) until the project's concrete goal spec is met, escalating to the user only on structural decisions. Wraps `analysis-pipeline` as a sub-workflow for code-heavy rounds; adds cross-domain critique, render-and-read visualization review, and self-improvement feedback into the framework itself.
+cost: heavy
 ---
 
 # Research Iterate Skill

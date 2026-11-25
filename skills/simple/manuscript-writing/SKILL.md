@@ -2,6 +2,7 @@
 name: manuscript-writing
 description: |
   Lightweight entry point for ad-hoc manuscript writing: drafting, refining, or editing journal manuscript text without running a full pipeline. Use whenever the user wants to draft a paragraph, refine an introduction, improve a sentence, write methods, expand a discussion, edit for voice, or apply the lab's writing conventions to existing prose. Trigger phrases: "help me draft this paragraph", "refine my introduction", "improve this sentence", "write the methods section", "edit for voice", "polish this paragraph", "tighten this writing", "fix the hedging in this sentence". Lightweight counterpart to the paper-research workflow (multi-phase pipeline). Route to paper-research when literature search is needed, expert-review for peer-review simulation, or manuscript-builder for final .docx rendering.
+cost: light
 ---
 
 # Manuscript Writing: Daily Entry Point

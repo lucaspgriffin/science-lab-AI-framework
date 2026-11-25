@@ -2,6 +2,7 @@
 name: expert-review
 description: |
   Simulates a panel of expert peer reviewers for academic manuscripts, technical reports, grant proposals, and white papers, then generates targeted edits addressing key criticisms. Use this skill whenever the user mentions: peer review, reviewing a manuscript, getting feedback on a paper, simulating reviewers, expert critique, manuscript revision, addressing reviewer comments, editorial feedback, or iterating on a draft. Also trigger when users upload a manuscript (.docx or .md) and ask for feedback, critique, improvement suggestions, or quality assessment. This skill works standalone or as a follow-up to paper-research. It supports iterative review-edit cycles where each round builds on the previous. Edits are applied as inline markup (~~deletions~~ and ++insertions++) in markdown, keeping the manuscript in a plain-text format until final .docx conversion via manuscript-builder.
+cost: heavy
 ---
 
 # Expert Review Skill

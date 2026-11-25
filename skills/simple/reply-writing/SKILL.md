@@ -2,6 +2,7 @@
 name: reply-writing
 description: |
   Lightweight entry point for ad-hoc reviewer reply writing: drafting, refining, or editing reply text and manuscript inserts without running the full pipeline. Use whenever the user wants to draft a reply to a single reviewer comment, refine an existing reply, improve tone or push-back wording, check voice on a reply, write a manuscript insert prompted by a comment, or apply the lab's reply conventions. Trigger phrases: "draft a reply to this comment", "help me respond to R1-C3", "refine this reply", "check the voice on this reply", "edit my reviewer response", "tighten this reply". Lightweight counterpart to reviewer-reply-planning/drafting (multi-comment pipeline with parallel sub-agents and tracked-changes rendering). Route to reviewer-reply-planning for full triage, or reviewer-reply-drafting for end-to-end tracked-changes render.
+cost: light
 ---
 
 # Reviewer Reply Writing: Daily Entry Point

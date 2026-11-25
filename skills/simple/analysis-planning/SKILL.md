@@ -2,6 +2,7 @@
 name: analysis-planning
 description: |
   Researches statistical approaches and published examples to produce a structured analysis plan for scientific data. Use this skill when the user mentions: planning an analysis, choosing a statistical model, designing an analytical approach, deciding between model types, preparing for a new analysis, or wanting to understand which methods to use. Also trigger when users describe a research question and dataset and want help selecting appropriate models. The skill runs parallel sub-agents to research fundamentals, find published examples, and assess detection or measurement bias (if applicable), then synthesizes into a justified plan with diagnostics checklist. Works standalone or as the first step in the analysis-pipeline.
+cost: medium
 ---
 
 # Analysis Planning Skill

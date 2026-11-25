@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="logo2.png" alt="Science Lab AI Framework" width="280">
+  <img src="logo2.png" alt="Science Lab AI" width="280">
 </p>
 
-<h1 align="center">Science Lab AI Framework</h1>
+<h1 align="center">Science Lab AI</h1>
 
 <p align="center">
-  <em>A framework for leveraging large language models as reliable science tools.</em><br>
+  <em>A customizable framework for using LLMs in scientific workflows.</em><br>
   <strong>Forked, not consumed.</strong><br>
   <span style="color:#6a6a66;">Repo: <code>science-lab-AI-framework</code></span>
 </p>
@@ -15,8 +15,30 @@
   <a href="LICENSE-CODE"><img src="https://img.shields.io/badge/code-MIT-green.svg" alt="Code licence: MIT"></a>
   <img src="https://img.shields.io/badge/version-0.2-orange.svg" alt="Version 0.2">
   <img src="https://img.shields.io/badge/status-early%20access-yellow.svg" alt="Status: early access">
-  <!-- <a href="https://doi.org/PLACEHOLDER"><img src="https://img.shields.io/badge/Zenodo-DOI-blue.svg" alt="Zenodo DOI"></a> -->
 </p>
+
+---
+
+## Contents
+
+1. [What this is](#what-this-is)
+2. [Why this exists](#why-this-exists)
+3. [Architecture at a glance](#architecture-at-a-glance)
+4. [Setup](#setup)
+5. [Integrating with your AI tool](#integrating-with-your-ai-tool)
+6. [Working with the framework day-to-day](#working-with-the-framework-day-to-day)
+7. [Working within a token budget](#working-within-a-token-budget)
+8. [Tracking the framework as it grows](#tracking-the-framework-as-it-grows)
+9. [What is inside](#what-is-inside)
+10. [What the setup interview asks](#what-the-setup-interview-asks)
+11. [Fundamentals and templates](#fundamentals-and-templates)
+12. [Extending the framework](#extending-the-framework)
+13. [Vocabulary](#vocabulary)
+14. [Roadmap](#roadmap)
+15. [Citation](#citation)
+16. [Licence](#licence)
+17. [Contributing](#contributing)
+18. [Acknowledgments](#acknowledgments)
 
 ---
 
@@ -24,13 +46,18 @@
 
 A **vendor-neutral framework** for setting up the persistent infrastructure a working scientist needs to leverage large language models as science tools across projects, sessions, and model generations.
 
-The framework is built around three architectural fundamentals:
+The framework is built around four architectural primitives:
 
-1. **Skills** as externalised conventions, methodological defaults, and workflows that the model invokes the same way every time.
-2. **Sub-agents** as specialist roles that mirror how a real lab divides cognitive labour.
+1. **Skills** as externalised conventions, methodological defaults, and workflows that the model invokes when it matches a relevant intent.
+2. **Hooks** as deterministic, event-triggered scripts that fire on every commit, prompt, or session end to enforce conventions and keep derived state in sync.
 3. **Knowledge bases** as curated, topic-organised, citation-anchored reference layers that grow with the researcher's career.
+4. **Sub-agents** as specialist roles that mirror how a real lab divides cognitive labour.
+
+Where Skills, Knowledge bases, and Sub-agents are best-effort (invoked when the model recognises a relevant intent), Hooks are guarantees: they fire regardless of what the model does. They are the framework's enforcement layer: they turn the rest from suggestions into infrastructure.
 
 It is intentionally generic. Out of the box it does nothing lab-specific. The point is that you fork it, run the AI-assisted onboarding, and end up with a framework tuned to your lab, your voice, your methods, and your tools.
+
+---
 
 ## Why this exists
 
@@ -38,46 +65,65 @@ LLMs are useful tools for supporting science, but they require essential scaffol
 
 It is not a packaged AI system. It is not vendor-specific. It is not a substitute for scientific judgment.
 
-It is a starting point.
+---
 
 ## Architecture at a glance
 
 The scientist configures the framework; the framework structures the LLM's work; the LLM's outputs flow back through the framework for the scientist to review and iterate. Every interface is two-way.
 
 ```
-        ┌──────────────────────────────────────────────────┐
-        │              Working scientist                   │
-        │       holds authority, curates, iterates         │
-        └──────────┬───────────────────────────▲───────────┘
-                   │                           │
-              configures /                  reviews /
-              maintains                     iterates
-                   ▼                           │
-        ┌──────────────────────────────────────────────────┐
-        │  Skills  ◀──▶  Sub-agents  ◀──▶  Knowledge base  │
-        │              (the framework files)               │
-        └──────────┬───────────────────────────▲───────────┘
-                   │                           │
-              invokes /                     outputs /
-              structures                    drafts
-                   ▼                           │
-        ┌──────────────────────────────────────────────────┐
-        │     Any capable LLM (Claude / GPT / Gemini)      │
-        └──────────────────────────────────────────────────┘
+     ┌──────────────────────────────────────────────────────────────────┐
+     │                      Working scientist                           │
+     │              holds authority, curates, iterates                  │
+     └──────────────┬───────────────────────────────▲───────────────────┘
+                    │                               │
+               configures /                      reviews /
+               maintains                         iterates
+                    ▼                               │
+     ┌──────────────────────────────────────────────────────────────────┐
+     │   Skills  ◀──▶  Hooks  ◀──▶  Knowledge base  ◀──▶  Sub-agents   │
+     └──────────────┬───────────────────────────────▲───────────────────┘
+                    │                               │
+               invokes /                         outputs /
+               structures                        drafts
+                    ▼                               │
+     ┌──────────────────────────────────────────────────────────────────┐
+     │           Any capable LLM (Claude / GPT / Gemini)                │
+     └──────────────────────────────────────────────────────────────────┘
 ```
 
 The cycle runs at every scale: a single chat session (LLM proposes; scientist verifies; framework updates), a project (skills get refined as analyses surface gaps), and a career (the knowledge base compounds across projects). The framework's job is to make every loop more reliable than the last.
+
+Four hooks ship in v0.2: a git `pre-commit` hook that regenerates the dashboard whenever framework files are staged, two Claude Code `UserPromptSubmit` hooks (one routes prompts to always-load conventions, one enforces the `**Using:** ...` declaration on every response), and a Claude Code `Stop` hook that regenerates the dashboard at session end. See `hooks/README.md` for the full inventory and `hooks/install.sh` for one-step installation.
+
+---
 
 ## Setup
 
 The framework is designed to be set up with AI assistance, which is the most reliable and efficient route. Direct editing of the files is also supported, and the two approaches combine freely: many adopters use the AI-assisted onboarding for the bulk of the work and then hand-edit anywhere they want to be more specific.
 
+> [!TIP]
+> The AI-assisted onboarding takes about an hour and fills in voice, format, code, and agent conventions for your lab automatically. Reach for the manual edits only when you want to override what the interview produced.
+
 ### Recommended: AI-assisted onboarding (~1 hour)
 
 ```bash
-# 1. Fork or clone the framework into your own version control
+# 1. Fork the framework on GitHub so the copy lives under your account.
+#    UI: visit https://github.com/jakebrownscombe/science-lab-AI-framework and click "Fork".
+#    Or via the gh CLI:
+gh repo fork jakebrownscombe/science-lab-AI-framework --clone --remote
+
+# 1b. If you forked via the UI rather than gh, clone your fork locally:
 git clone https://github.com/<your-username>/science-lab-AI-framework.git my-lab-framework
 cd my-lab-framework
+
+# 1c. Install the pre-commit hook so the dashboard auto-regenerates on every commit
+ln -sf ../../tools/git-hooks/pre-commit .git/hooks/pre-commit
+
+# 1d. (Optional, recommended) Install the Claude Code hooks: always-load convention
+#     routing, the "Using:" declaration, and session-end dashboard refresh.
+bash hooks/install.sh
+# Then paste the printed JSON stanza into ~/.claude/settings.json under "hooks".
 
 # 2. Open the onboarding form in your browser
 open setup/lab-onboarding.html
@@ -94,6 +140,8 @@ open setup/lab-onboarding.html
 #    commit, and you are ready.
 ```
 
+Forking (rather than cloning the upstream directly) gives you a remote copy on GitHub under your account, which lets you commit your lab-specific customisations, share with collaborators, and contribute improvements back as pull requests. It also lets the maintainers see who is using the framework via GitHub's forks count.
+
 What you end up with: populated `conventions/voice.md`, `manuscript-format.md`, `code-format.md`, `figure-format.md`, `reply-format.md`, stubs for any domain-specialist agents you need, and a seeded knowledge base with your first three topics. If you prefer chat over a browser form, `setup/SKILL.md` runs the same interview directly in any LLM session.
 
 ### Direct editing (anytime)
@@ -105,6 +153,8 @@ Every file in the framework is designed to be edited. Use the AI-assisted onboar
 - Seed `knowledge_base/` with topic folders following the `_topic.template/` skeleton.
 
 The component READMEs inside each top-level folder walk you through what each file does and how to populate it.
+
+---
 
 ## Integrating with your AI tool
 
@@ -139,15 +189,13 @@ Now when you run `claude` from any project directory, Claude Code can read every
 
 ### Anthropic SDK and API
 
-For applications built on the Anthropic SDK, load the framework's markdown files programmatically and inject them as system-prompt content or file references. Pattern: detect the task intent, read the relevant SKILL.md, prepend it to the system prompt, run. A reference implementation is on the v0.3 roadmap.
+For applications built on the Anthropic SDK, load the framework's markdown files programmatically and inject them as system-prompt content or file references. Pattern: detect the task intent, read the relevant SKILL.md, prepend it to the system prompt, run.
 
 ### Other harnesses
 
 Any AI tool that can read markdown files on demand (via file-system access, RAG, MCP, or attached file references), invoke sub-processes for sub-agent role-play within a session, and load external context via system prompts, project files, or retrieval can run the framework.
 
-Concrete pattern: load `CLAUDE.md` as the session's high-level instructions; load relevant SKILL.md files when their trigger description matches the task; reference sub-agent role files when dispatching specialist work. Cross-harness adapters (ChatGPT custom-GPT projects, Gemini extensions, LangChain or LlamaIndex wrappers) are a v0.4 roadmap item; community contributions welcome.
-
-A future release may also ship a parallel `AGENTS.md` (the cross-vendor convention OpenAI and others have proposed) as a symlink to `CLAUDE.md`, so harnesses that auto-load `AGENTS.md` pick up the framework without manual configuration.
+Concrete pattern: load `CLAUDE.md` as the session's high-level instructions; load relevant SKILL.md files when their trigger description matches the task; reference sub-agent role files when dispatching specialist work. Cross-harness adapter examples (ChatGPT custom-GPT projects, Gemini extensions, LangChain or LlamaIndex wrappers) are welcome as community contributions.
 
 ### What the framework does not require
 
@@ -155,11 +203,79 @@ A future release may also ship a parallel `AGENTS.md` (the cross-vendor conventi
 - No vendor SDK lock-in. No build step, no compile target, no install pipeline.
 - No paid hosting. The framework runs locally; the LLM call is the only external dependency.
 
+---
+
+## Working with the framework day-to-day
+
+Once your AI tool is wired up, you invoke the framework through natural conversation. When you ask the AI to do something, the routing tables in `CLAUDE.md` match your intent to the right skill, which loads the right conventions, which dispatches the right specialist agents. You start the conversation; the framework handles the rest.
+
+### Common entry points
+
+A few of the most-used starting prompts, with what fires under the hood. Examples below use the running fictional terrestrial-ecology lab; the pattern transfers to any domain.
+
+- **Plan an analysis.** *"I want to model small-mammal occupancy across the canopy-cover gradient. Plan the statistical approach."* → `analysis-planning` fires; parallel sub-agents research fundamentals, published precedents, and detection-bias considerations; returns a justified plan with a diagnostics checklist.
+- **Implement the analysis.** *"Now write the R code from that plan."* → `code-writing` fires; scaffolds scripts following your `code-format.md`, adds embedded diagnostics.
+- **Review code.** *"Review the analysis code in `scripts/`."* → `code-review` fires; hybrid automated + sub-agent review with annotated issues.
+- **Draft a paragraph.** *"Help me draft the intro for a paper on canopy-cover effects on small-mammal occupancy."* → `manuscript-writing` fires; loads your `voice.md` and `manuscript-format.md`, drafts in your lab's voice.
+- **Triage reviewer comments.** *"Triage these reviewer comments."* → `reviewer-reply-planning` fires; classifies each comment, flags which need your input on a structural decision.
+- **Run a full workflow.** *"Run the full analysis pipeline on this project."* → `analysis-pipeline` (the orchestrator) fires; chains plan, implement, review, iterate.
+
+You can also invoke skills by name when you want explicit control: *"Use the code-review skill on `data_clean.R`"* or *"Run the manuscript-pipeline."* Skills can be chained across sessions, and longer projects typically loop through `research-iterate` (in `skills/workflows/`) for multi-round refinement.
+
+### Iteration is the point
+
+The framework assumes you come back. A first pass at `analysis-planning` will reveal gaps; the `research-iterate` workflow takes a project from first cut to publication-ready over multiple rounds, with parallel specialist critique and quality gates per round. The dashboard (next section) shows the framework's state at any moment, so you can see exactly which files have been added, modified, or are still pending across sessions.
+
+---
+
+## Working within a token budget
+
+The framework's simple skills are cheap to run; the multi-phase workflows are not. A single `manuscript-writing` invocation might use 2-3K tokens; a full `manuscript-pipeline` orchestration can easily use 100K+. If you are working within a Claude Pro session limit, a Tier 1 API budget, or any other token-constrained context, the framework supports that, but you have to invoke it deliberately.
+
+> [!WARNING]
+> The orchestrator workflows (`manuscript-pipeline`, `analysis-pipeline`, `research-iterate`, `expert-review`, `paper-research`, `reviewer-reply-pipeline`) burn tokens fast. Treat them as final-polish tools, not as the default route. Use the simple skills directly during early-stage work.
+
+### Cost tiers
+
+Skills carry one of three rough cost profiles. The dashboard surfaces this on each skill card.
+
+| Tier | Rough range | What it looks like |
+|---|---|---|
+| **Light** | 1-5K tokens | Single-job skills with no sub-agents: drafting a paragraph, rendering a `.docx`, replying to one reviewer comment, writing a synthesis |
+| **Medium** | 10-30K tokens | Single skills that spawn internal sub-agents or run multi-pass review: `analysis-planning`, `code-review`, `reviewer-reply-planning`, `reviewer-reply-drafting` |
+| **Heavy** | 50-200K+ tokens | Multi-phase orchestrators with parallel sub-agent dispatch: `paper-research`, `expert-review`, all `*-pipeline` skills, and especially `research-iterate` (which loops over rounds) |
+
+### Budget-conscious patterns
+
+- **Invoke simple skills directly, not orchestrators.** *"Plan the analysis"* (one skill call) is far cheaper than *"run the full analysis pipeline"* (chains plan, implement, review). Save the orchestrator for projects where the spend is justified.
+- **Run pipeline phases manually, one at a time.** Instead of `manuscript-pipeline`, run `paper-research`, then `manuscript-writing`, then `expert-review` as discrete calls across separate sessions. Stop early if the output is good enough.
+- **Reserve heavy workflows for stakes that justify them.** `research-iterate` and the orchestrator pipelines are designed for the "rough to publication-ready" transition with defensible quality gates. They are not the right tool for a sketch.
+- **Trim parallel sub-agent dispatch.** Ask explicitly: *"Run expert-review with two reviewers instead of five"* or *"In research-iterate, skip the parallel critique this round."*
+- **Choose the model to fit the task.** Lighter models (Haiku, Sonnet) handle routine writing and code generation cleanly. Reserve frontier models (Opus and equivalents) for synthesis steps that genuinely need them.
+- **Session hygiene.** Start fresh sessions for new tasks; dragging long context across topics burns tokens on irrelevant history.
+
+A workable budget pattern: use simple skills throughout the project lifecycle (one `analysis-planning`, one `code-writing`, one `code-review`, a few `manuscript-writing` calls), and reserve a single `research-iterate` pass for final polish before submission. That is roughly one heavy workflow plus a handful of light invocations, producing a defensible output without burning a month's tokens in one session.
+
+---
+
 ## Tracking the framework as it grows
 
-The dashboard at `tools/system-dashboard.html` is the central place to keep track of your framework as it develops. As you populate conventions, add domain-specialist agents, seed knowledge-base topics, or modify skills, the dashboard reflects what is in place and what is still pending. **Keep it open as you build.** It is the most reliable view of how your fork is evolving, both for yourself and for collaborators who clone from your version.
+The dashboard at `tools/system-dashboard.html` is the central place to keep track of your framework as it develops. As you populate conventions, add domain-specialist agents, seed knowledge-base topics, or modify skills, the dashboard reflects what is in place and what is still pending.
 
-Regenerate it at any point:
+> [!IMPORTANT]
+> Keep the dashboard open as you build. It is the most reliable view of how your fork is evolving, both for yourself and for collaborators who clone from your version.
+
+**The dashboard regenerates itself.** Two mechanisms keep it current without you remembering to run anything:
+
+- **Pre-commit git hook.** Whenever you stage changes to `skills/`, `agents/`, `knowledge_base/`, `conventions/`, or `setup/`, the hook at `tools/git-hooks/pre-commit` runs the generator and stages the updated dashboard alongside your commit. Install once per clone:
+
+  ```bash
+  ln -sf ../../tools/git-hooks/pre-commit .git/hooks/pre-commit
+  ```
+
+- **AI instruction in CLAUDE.md.** When your AI tool modifies framework files, it is instructed to regenerate the dashboard before reporting the task complete. The pre-commit hook is the backstop.
+
+Manual regeneration is still available if you need it (e.g., the hook is not installed, or you want to refresh after editing in a non-git workspace):
 
 ```bash
 node tools/generate-state.js
@@ -178,6 +294,8 @@ Six panels cover:
 - **Setup**: onboarding prompts plus a recap of which conventions are populated.
 
 The dashboard is intentionally dependency-free static HTML. No server, no build pipeline, no external CDN. Run the generator, open the file, see the state.
+
+---
 
 ## What is inside
 
@@ -224,11 +342,21 @@ science-lab-AI-framework/
 │   ├── lab-onboarding.html  self-contained HTML form
 │   └── prompts/             helper prompts the setup skill uses
 │
+├── hooks/                   event-triggered Claude Code automation
+│   ├── inject-conventions.sh   UserPromptSubmit: route prompts to always-load conventions
+│   ├── announce-skills.sh      UserPromptSubmit: enforce the "Using:" declaration
+│   ├── refresh-state.sh        Stop: regenerate dashboard at session end
+│   ├── install.sh              one-step install into ~/.claude/
+│   └── README.md               hooks overview, install, customisation
+│
 └── tools/                   runnable code
     ├── generate-state.js    dashboard data generator (Node.js)
     ├── system-dashboard.html  self-contained dashboard viewer
+    ├── git-hooks/           git-layer hooks (pre-commit dashboard refresh)
     └── README.md            how to run the dashboard
 ```
+
+---
 
 ## What the setup interview asks
 
@@ -242,7 +370,9 @@ The HTML form covers seven phases. Answers persist in `localStorage` so partial 
 - **Knowledge-base seed**: three topics to populate first.
 - **Quality preferences**: which research-iterate gates apply.
 
-## Suggested fundamentals (and what you own)
+---
+
+## Fundamentals and templates
 
 The framework is yours to shape. Every file is editable, and the structure is built to accommodate replacement, removal, and extension. What ships in v0.2 is a starting point organised into two kinds of file:
 
@@ -251,6 +381,8 @@ The framework is yours to shape. Every file is editable, and the structure is bu
 
 The naming convention `*.template.md` flags the "yours to fill" files in `ls` output; everything else is a suggested starting point you can override at any time.
 
+---
+
 ## Extending the framework
 
 - **Add domain-specialist agents.** Copy `agents/_domain-specialist.template.md` to `agents/<your-specialist>.md` and fill in the slots. Update the Lab Director's routing table to send relevant tasks there.
@@ -258,6 +390,8 @@ The naming convention `*.template.md` flags the "yours to fill" files in `ls` ou
 - **Tune the skills.** The SKILL.md files in `skills/simple/` and `skills/workflows/` are designed to be edited. They are living documents, not fixed contracts.
 - **Use the iteration workflow.** `conventions/iteration-workflow.md` and `skills/workflows/research-iterate/SKILL.md` together provide a structured loop for converting analyses into publication-ready outputs.
 - **Self-update.** `conventions/system-improvement-protocol.md` defines how user feedback during a project becomes durable changes to the framework itself.
+
+---
 
 ## Vocabulary
 
@@ -270,8 +404,11 @@ The terms used in this framework follow the paper:
 | **Sub-agent** | A specialist role definition (markdown file) that the model adopts for a delimited task within a session. |
 | **Knowledge base** | A topic-organised, citation-anchored, markdown-native reference layer that the model loads for context. |
 | **Convention** | A rule file (voice, research integrity, format) loaded by skills as a reference. |
+| **Hook** | A deterministic script that fires on a system event (a git commit, a Claude Code prompt submission, a Claude Code session ending) rather than on user intent. Hooks are the framework's enforcement layer: they fire whether or not the model recognises that a rule should apply. The framework ships four hooks: a git pre-commit hook at `tools/git-hooks/pre-commit` plus three Claude Code hooks under `hooks/`. See `hooks/README.md`. |
 
 Skills follow the open Agent Skills standard. Knowledge bases use plain Markdown for portability; retrieval can be wired through any framework that supports RAG or the Model Context Protocol.
+
+---
 
 ## Roadmap
 
@@ -282,21 +419,26 @@ Skills follow the open Agent Skills standard. Knowledge bases use plain Markdown
 
 The framework is designed to be **non-stationary**. Models will change, vendor APIs will change, conventions in your lab will change. The structure is built so those changes update *files*, not the architecture.
 
+---
+
 ## Citation
 
-If you fork, adapt, or use this framework in published work, please cite:
+If you fork, adapt, or use this framework in published work, please cite it:
 
 ```bibtex
-@misc{brownscombe2026sciencelabaiframework,
-  author       = {Brownscombe, J. W. and others},
-  title        = {science-lab-AI-framework: A reference framework for the hybrid digital lab},
-  year         = {2026},
-  publisher    = {Zenodo},
-  version      = {0.2},
-  doi          = {10.5281/zenodo.PLACEHOLDER}
+@software{brownscombe2026sciencelabaiframework,
+  author    = {Brownscombe, Jacob W.},
+  title     = {Science Lab {AI}: A customizable framework for using LLMs in scientific workflows},
+  year      = {2026},
+  version   = {0.2},
+  url       = {https://github.com/jakebrownscombe/science-lab-AI-framework}
 }
 ```
 
+Use the "Cite this repository" link in the repo's right sidebar for APA and other formats.
+
+
+---
 
 ## Licence
 
@@ -305,17 +447,21 @@ If you fork, adapt, or use this framework in published work, please cite:
 
 This dual-licensing reflects the framework's nature: the methodological scaffolding is documentation that benefits from broad reuse with attribution; the runnable tooling is code that benefits from permissive integration.
 
+---
+
 ## Contributing
 
 The framework is built to be forked. Contributions back to the canonical repo are welcome in the following forms:
 
 - **Adopter case studies**: short writeups of how a lab adapted the framework, what worked, what did not. These directly inform the next iteration.
-- **Domain-specialist agents**: generic enough to be useful across labs, opinionated enough to be useful at all. PRs into `agents/community-specialists/` (folder will be created with the first contribution).
+- **Domain-specialist agents**: generic enough to be useful across labs, opinionated enough to be useful at all. PRs into `agents/community-specialists/`.
 - **Knowledge-base topic skeletons**: per-domain INDEX.md + a starter article on a methods topic. PRs into `knowledge_base/community-topics/`.
 - **Cross-harness ports**: adapters that let the framework run cleanly on GPT, Gemini, or open-weight models.
 - **Dashboard extensions**: new panels, better visualisations, alternative renderers.
 
 Please open an issue before substantial work to discuss scope. The framework is intentionally minimal at the core; not every contribution will be appropriate to merge upstream, but every contribution informs the design.
+
+---
 
 ## Acknowledgments
 
