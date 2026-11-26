@@ -69,6 +69,9 @@ environmental covariates. Does not cover environmental data acquisition itself (
   stream to iSDMs.
 - **movement-ecology-analysis**: movement-derived selection patterns provide complementary
   inference at the individual scale.
+- **fisheries-independent-monitoring**: Florida FIM seine and trawl catches are the
+  zero-inflated survey data the hurdle models here are built for; gear filters and
+  stratification are in that topic's survey design article.
 - Environmental-covariate workflows are owned by the
   `geospatial-environmental-data-specialist` agent (no dedicated KB topic yet; may be
   added if workflows accumulate).
